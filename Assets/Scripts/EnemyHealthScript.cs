@@ -5,6 +5,7 @@ public class EnemyHealthScript : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
 
+    public EnemySpawnerScript spawn;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float flashDuration = 0.1f;
