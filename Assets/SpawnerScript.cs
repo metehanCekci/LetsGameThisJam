@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement; // <-- Bunu ekle
 
 public class EnemySpawnerScript : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    public GameObject[] enemyPrefabs; // Add multiple enemy prefabs here
-    public Transform[] spawnPoints;   // Add multiple spawn positions
+    public GameObject[] enemyPrefabs;
+    public Transform[] spawnPoints;
     public float spawnInterval = 5f;
     public int maxEnemies = 20;
 
     private int currentEnemyCount = 0;
+    private int totalSpawnedEnemies = 0;
+    private int totalEnemiesToSpawn = 20; // örnek: tüm düşmanlar bir defa üretilecekse
 
     void Start()
     {
@@ -18,7 +21,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        while (true)
+        while (totalSpawnedEnemies < totalEnemiesToSpawn)
         {
             yield return new WaitForSeconds(spawnInterval);
 
@@ -37,14 +40,13 @@ public class EnemySpawnerScript : MonoBehaviour
             return;
         }
 
-        // Pick a random enemy type and spawn point
         GameObject selectedEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         GameObject newEnemy = Instantiate(selectedEnemy, spawnPoint.position, Quaternion.identity);
         currentEnemyCount++;
+        totalSpawnedEnemies++;
 
-        // Subscribe to death event if supported
         EnemyHealthScript enemyHealth = newEnemy.GetComponent<EnemyHealthScript>();
         if (enemyHealth != null)
         {
@@ -55,5 +57,18 @@ public class EnemySpawnerScript : MonoBehaviour
     void EnemyDied()
     {
         currentEnemyCount--;
+
+        // Hepsi öldü mü?
+        if (totalSpawnedEnemies >= totalEnemiesToSpawn && currentEnemyCount <= 0)
+        {
+            Debug.Log("All enemies are dead. Loading next scene...");
+            LoadNextScene();
+        }
     }
+
+void LoadNextScene()
+{
+    SceneManager.LoadScene("RandomShop");
+}
+
 }
