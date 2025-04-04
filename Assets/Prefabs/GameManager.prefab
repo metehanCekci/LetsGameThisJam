@@ -58,4 +58,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  health: 0
+  MaxStamina: 100
+  Health: 100
+  AttackPower: 10
+  WalkSpeed: 3
+  RunSpeed: 5
+  AttackCooldown: 0.5
+  goldMultiplier: 1
+  AttackRange: 1
