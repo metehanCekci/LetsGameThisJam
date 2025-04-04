@@ -3,24 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public SplashScreenFade SplashScreenFade;
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void NextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(GameManagerScript.instance.level + 1);
+        GameManagerScript.instance.level += 1;
     }
     public void QuitGame()
     {
@@ -33,5 +29,34 @@ public class SceneChangeScript : MonoBehaviour
 #else
             Application.Quit();
 #endif
+    }
+    public void loadLevel1()
+    {
+        SceneManager.LoadScene(3);
+    }
+    public void loadLevel2()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void loadLevel3()
+    {
+        SceneManager.LoadScene(5);
+    }
+    public void loadLevel4()
+    {
+        SceneManager.LoadScene(6);
+    }
+    public void loadLevel5()
+    {
+        SceneManager.LoadScene(7);
+    }
+    public void loadLevel6()
+    {
+        SceneManager.LoadScene(8);
+    }
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(1);
+
     }
 }
