@@ -1,39 +1,42 @@
 using UnityEngine;
 
-public class PlayerHealthScript : MonoBehaviour
+public class EnemyHealthScript : MonoBehaviour
 {
     public int maxHealth = 100;
-    public float flashDuration = 0.1f;
-
     private int currentHealth;
+
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
-    private Rigidbody2D rb;
+    public float flashDuration = 0.1f;
 
     void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
-        rb = GetComponent<Rigidbody2D>();
+
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Hurtbox"))
+        if (other.CompareTag("Hitbox"))
         {
-            TakeDamage(10, other.transform);
+            TakeDamage(10); // Adjust damage amount as needed
         }
     }
 
-    void TakeDamage(int damage, Transform damageSource)
+    void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log($"{gameObject.name} took {damage} damage. Health: {currentHealth}");
 
-        // Flash red
-        StartCoroutine(FlashRed());
-
-        // Knockback
+        if (spriteRenderer != null)
+        {
+            StartCoroutine(FlashRed());
+        }
 
         if (currentHealth <= 0)
         {
@@ -48,10 +51,12 @@ public class PlayerHealthScript : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
+    public event System.Action OnDeath;
+
     void Die()
     {
-        Debug.Log("Player Died");
-        // Oyuncu öldüğünde olacaklar buraya (örn. sahneyi yeniden başlatma)
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
+
 }
