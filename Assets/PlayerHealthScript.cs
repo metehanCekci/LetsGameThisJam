@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerHealthScript : MonoBehaviour
 {
     public int maxHealth = 100;
-    public float knockbackForce = 5f;
     public float flashDuration = 0.1f;
 
     private int currentHealth;
@@ -35,8 +34,6 @@ public class PlayerHealthScript : MonoBehaviour
         StartCoroutine(FlashRed());
 
         // Knockback
-        Vector2 knockbackDirection = (transform.position - damageSource.position).normalized;
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
         if (currentHealth <= 0)
         {

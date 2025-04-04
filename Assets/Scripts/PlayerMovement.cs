@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         canSlash = false;
 
         
-        Vector3 offset = (Vector3)(lastMoveDirection.normalized * 0.5f);
+        Vector3 offset = (Vector3)(lastMoveDirection.normalized * 1f);
         Vector3 spawnPosition = firePoint.position + offset;
 
         GameObject slash = Instantiate(Slash, spawnPosition, Quaternion.identity);
