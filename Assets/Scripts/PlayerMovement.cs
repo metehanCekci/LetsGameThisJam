@@ -1,27 +1,77 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
+    public float currentSpeed;
+    public GameObject Slash;
+    public Transform firePoint;
+    public float slashLifetime = 0.2f;
+    public float slashCooldown = 0.5f;
 
-    void Update()
+    private Vector2 lastMoveDirection = Vector2.right;
+    private bool canSlash = true;
+    private Vector2 moveInput;
+
+    private void Start()
     {
-        Vector2 moveDirection = Vector2.zero;
+        currentSpeed = walkSpeed;
+    }
 
-        if (Input.GetKey(KeyCode.W))
-            moveDirection += Vector2.up;
-        if (Input.GetKey(KeyCode.S))
-            moveDirection += Vector2.down;
-        if (Input.GetKey(KeyCode.A))
-            moveDirection += Vector2.left;
-        if (Input.GetKey(KeyCode.D))
-            moveDirection += Vector2.right;
+    void FixedUpdate()
+    {
+        if (moveInput.sqrMagnitude > 0.01f)
+        {
+            lastMoveDirection = moveInput.normalized;
+        }
 
-        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+        transform.Translate(moveInput.normalized * currentSpeed * Time.deltaTime);
+    }
 
-        transform.Translate(moveDirection.normalized * currentSpeed * Time.deltaTime);
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed && canSlash)
+        {
+            StartCoroutine(PerformSlash());
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            currentSpeed = runSpeed;
+        }
+
+        if (context.canceled)
+        {
+            currentSpeed = walkSpeed;
+        }
+    }
+
+    IEnumerator PerformSlash()
+    {
+        canSlash = false;
+
+        
+        Vector3 offset = (Vector3)(lastMoveDirection.normalized * 1f);
+        Vector3 spawnPosition = firePoint.position + offset;
+
+        GameObject slash = Instantiate(Slash, spawnPosition, Quaternion.identity);
+        slash.transform.parent = Slash.transform.parent;
+        slash.SetActive(true);
+
+        Destroy(slash, slashLifetime);
+
+        yield return new WaitForSeconds(slashCooldown);
+        canSlash = true;
     }
 }
