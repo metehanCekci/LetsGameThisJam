@@ -4,29 +4,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 5f;
-    public float runSpeed = 10f;
-    public float currentSpeed;
-
-    public float maxStamina = 100f;
-    public float currentStamina;
-    public float staminaDrainRate = 25f;
-    public float staminaRegenRate = 15f;
-
     public GameObject Slash;
+    public GameObject GameManager;
     public Transform firePoint;
     public float slashLifetime = 0.2f;
-    public float slashCooldown = 0.5f;
+    public int currentMoveSpeed;
 
     private Vector2 lastMoveDirection = Vector2.right;
     private bool canSlash = true;
     private Vector2 moveInput;
     private bool isSprinting = false;
 
+    private float currentStamina;
+
     private void Start()
     {
-        currentSpeed = walkSpeed;
-        currentStamina = maxStamina;
+        if(GameManagerScript.instance == null)
+        Instantiate(GameManager);
+        currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
+        currentStamina = GameManagerScript.instance.MaxStamina;
     }
 
     void FixedUpdate()
@@ -36,24 +32,23 @@ public class PlayerMovement : MonoBehaviour
             lastMoveDirection = moveInput.normalized;
         }
 
-        // Stamina kontrolü
         if (isSprinting && currentStamina > 0)
         {
-            currentStamina -= staminaDrainRate * Time.fixedDeltaTime;
+            currentStamina -= 25f * Time.fixedDeltaTime; // Using fixed drain rate for now
             if (currentStamina <= 0)
             {
                 currentStamina = 0;
                 StopSprinting();
             }
         }
-        else if (!isSprinting && currentStamina < maxStamina)
+        else if (!isSprinting && currentStamina < GameManagerScript.instance.MaxStamina)
         {
-            currentStamina += staminaRegenRate * Time.fixedDeltaTime;
-            if (currentStamina > maxStamina)
-                currentStamina = maxStamina;
+            currentStamina += 15f * Time.fixedDeltaTime; // Using fixed regen rate for now
+            if (currentStamina > GameManagerScript.instance.MaxStamina)
+                currentStamina = GameManagerScript.instance.MaxStamina;
         }
 
-        transform.Translate(moveInput.normalized * currentSpeed * Time.deltaTime);
+        transform.Translate(moveInput.normalized * currentMoveSpeed * Time.deltaTime);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -84,20 +79,22 @@ public class PlayerMovement : MonoBehaviour
     void StartSprinting()
     {
         isSprinting = true;
-        currentSpeed = runSpeed;
+        currentMoveSpeed = GameManagerScript.instance.RunSpeed;
+        // Speed is already set in GameManager so we just rely on that
     }
 
     void StopSprinting()
     {
         isSprinting = false;
-        currentSpeed = walkSpeed;
+        currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
+        // Same here, we just keep using RunSpeed regardless of state
     }
 
     IEnumerator PerformSlash()
     {
         canSlash = false;
 
-        Vector3 offset = (Vector3)(lastMoveDirection.normalized * 1f);
+        Vector3 offset = (Vector3)(lastMoveDirection.normalized * GameManagerScript.instance.AttackRange);
         Vector3 spawnPosition = firePoint.position + offset;
 
         GameObject slash = Instantiate(Slash, spawnPosition, Quaternion.identity);
@@ -106,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
         Destroy(slash, slashLifetime);
 
-        yield return new WaitForSeconds(slashCooldown);
+        yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown);
         canSlash = true;
     }
 }
