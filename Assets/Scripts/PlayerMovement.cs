@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentSpeed;
     public GameObject Slash;
     public Transform firePoint;
-    public float slashSpeed = 10f;
-    public float slashLifetime = 0.3f;
+    public float slashLifetime = 0.2f;
     public float slashCooldown = 0.5f;
 
     private Vector2 lastMoveDirection = Vector2.right;
@@ -62,17 +61,13 @@ public class PlayerMovement : MonoBehaviour
     {
         canSlash = false;
 
-        float angle = Mathf.Atan2(lastMoveDirection.y, lastMoveDirection.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(0, 0, angle);
+        
+        Vector3 offset = (Vector3)(lastMoveDirection.normalized * 0.5f);
+        Vector3 spawnPosition = firePoint.position + offset;
 
-        GameObject slash = Instantiate(Slash, firePoint.position, rotation);
+        GameObject slash = Instantiate(Slash, spawnPosition, Quaternion.identity);
+        slash.transform.parent = Slash.transform.parent;
         slash.SetActive(true);
-
-        Rigidbody2D rb = slash.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = lastMoveDirection * slashSpeed;
-        }
 
         Destroy(slash, slashLifetime);
 

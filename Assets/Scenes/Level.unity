@@ -286,6 +286,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2895136691896168867, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3973118696057897933, guid: d54122b65503b00409569279a041b0f3, type: 3}
       propertyPath: m_Name
       value: Capsule
@@ -329,6 +333,14 @@ PrefabInstance:
     - target: {fileID: 4698801701679254398, guid: d54122b65503b00409569279a041b0f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616082899730117770, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616082899730117770, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
