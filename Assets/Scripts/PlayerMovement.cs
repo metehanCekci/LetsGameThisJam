@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform firePoint;
     public float slashLifetime = 0.2f;
     public int currentMoveSpeed;
+    private Animator animator;
+    public bool lookingLeft;
+    public bool lookingUp;
+    public bool idle;
+
 
     private Vector2 lastMoveDirection = Vector2.right;
     private bool canSlash = true;
@@ -23,6 +29,27 @@ public class PlayerMovement : MonoBehaviour
         Instantiate(GameManager);
         currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
         currentStamina = GameManagerScript.instance.MaxStamina;
+        animator = this.gameObject.GetComponent<Animator>();
+    }
+    private void Update(){
+        if (idle){
+            if (lookingLeft){
+                if (lookingUp){
+
+                }
+                else{
+
+                }
+            }
+            else{
+                if (lookingUp){
+
+                }
+                else {
+                    
+                }
+            }
+        }
     }
 
     void FixedUpdate()
@@ -54,7 +81,57 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+
+        if (moveInput.sqrMagnitude < 0.01f)
+        {
+            animator.SetBool("goingUp", false);
+            animator.SetBool("goingDown", false);
+            animator.SetBool("goingLeft", false);
+            animator.SetBool("goingRight", false);
+            return;
+            idle = true;
+        }
+
+        if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+        {
+            if (moveInput.x > 0)
+            {
+                animator.SetBool("goingRight", true);
+                animator.SetBool("goingLeft", false);
+                animator.SetBool("goingUp", false);
+                animator.SetBool("goingDown", false);
+                lookingLeft = false;
+            }
+            else
+            {
+                animator.SetBool("goingRight", false);
+                animator.SetBool("goingLeft", true);
+                animator.SetBool("goingUp", false);
+                animator.SetBool("goingDown", false);
+                lookingLeft = true;
+            }
+        }
+        else
+        {
+            if (moveInput.y > 0)
+            {
+                animator.SetBool("goingUp", true);
+                animator.SetBool("goingDown", false);
+                animator.SetBool("goingRight", false);
+                animator.SetBool("goingLeft", false);
+                lookingUp = true;
+            }
+            else
+            {
+                animator.SetBool("goingUp", false);
+                animator.SetBool("goingDown", true);
+                animator.SetBool("goingRight", false);
+                animator.SetBool("goingLeft", false);
+                lookingUp = false;
+            }
+        }
     }
+
 
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -106,4 +183,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown);
         canSlash = true;
     }
+    
 }
