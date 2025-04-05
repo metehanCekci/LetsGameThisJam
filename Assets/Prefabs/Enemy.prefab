@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfade3d447ec7745bccd541ed5981e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.5
   followRange: 999
   attackRange: 5
   shootDelay: 1

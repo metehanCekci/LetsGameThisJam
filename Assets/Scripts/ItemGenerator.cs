@@ -6,6 +6,8 @@ public class ItemGenerator : MonoBehaviour
 {
     public ItemEffect itemEffect;
     public TextMeshProUGUI costText;
+    public GameObject newFeatureImage;
+
 
     public void GenerateItemWithEffect(ItemEffect.EffectType fixedEffect)
     {
@@ -18,6 +20,13 @@ public class ItemGenerator : MonoBehaviour
 
         if (costText != null)
             costText.text = $"{cost} Altın";
+
+        if (newFeatureImage != null)
+        {
+            bool isNewUpgrade = fixedEffect == ItemEffect.EffectType.Lifesteal || fixedEffect == ItemEffect.EffectType.GoldMultiplier;
+            newFeatureImage.SetActive(isNewUpgrade);
+        }
+
     }
 
     float GetFixedStatValue(ItemEffect.EffectType type)
@@ -32,6 +41,7 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.AttackRange: return 0.5f;
             case ItemEffect.EffectType.GoldMultiplier: return 0.25f;
             case ItemEffect.EffectType.AttackCooldown: return -0.1f;
+            case ItemEffect.EffectType.Lifesteal: return 1f;
             default: return 1f;
         }
     }
@@ -48,6 +58,7 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.AttackRange: return 35f;
             case ItemEffect.EffectType.GoldMultiplier: return 100f;
             case ItemEffect.EffectType.AttackCooldown: return 80f;
+            case ItemEffect.EffectType.Lifesteal: return 100f;
             default: return 100f;
         }
     }
