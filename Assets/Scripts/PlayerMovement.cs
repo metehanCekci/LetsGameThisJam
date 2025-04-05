@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject GameManager;
     public Transform firePoint;
     public float slashLifetime = 0.2f;
-    public int currentMoveSpeed;
+    public float currentMoveSpeed;
     private Animator animator;
     public bool currentDirXorY;
     private SpriteRenderer spriteRenderer;
