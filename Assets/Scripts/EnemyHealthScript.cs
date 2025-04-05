@@ -1,3 +1,5 @@
+// EnemyHealthScript.cs
+
 using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
@@ -9,10 +11,13 @@ public class EnemyHealthScript : MonoBehaviour
     private Color originalColor;
     public float flashDuration = 0.1f;
 
+    private CameraShake cameraShake;
+
     void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cameraShake = FindAnyObjectByType<CameraShake>(); // Kamera sarsıntısını bul
 
         if (spriteRenderer != null)
         {
@@ -24,7 +29,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         if (other.CompareTag("Hitbox"))
         {
-            TakeDamage(10); // Adjust damage amount as needed
+            TakeDamage(10);
         }
     }
 
@@ -36,6 +41,11 @@ public class EnemyHealthScript : MonoBehaviour
         if (spriteRenderer != null)
         {
             StartCoroutine(FlashRed());
+        }
+
+        if (cameraShake != null)
+        {
+            cameraShake.ShakeCamera(5f, 0.1f); // Singleton yok, referans ile çağır
         }
 
         if (currentHealth <= 0)
@@ -58,5 +68,4 @@ public class EnemyHealthScript : MonoBehaviour
         OnDeath?.Invoke();
         Destroy(gameObject);
     }
-
 }

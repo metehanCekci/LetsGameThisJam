@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 public class MarketManager : MonoBehaviour
 {
@@ -80,17 +82,9 @@ public class MarketManager : MonoBehaviour
             return;
         }
 
-        
         GameManagerScript.instance.GoldAmount -= 20;
         Debug.Log("Market yenilendi, 20 altýn harcandý.");
 
-        
-        foreach (var generator in itemGenerators)
-        {
-            generator.gameObject.SetActive(false);
-        }
-
-        
         List<ItemEffect.EffectType> effects = new List<ItemEffect.EffectType>
     {
         ItemEffect.EffectType.MaxHealth,
@@ -107,19 +101,28 @@ public class MarketManager : MonoBehaviour
 
         int generatorIndex = 0;
 
+        foreach (var generator in itemGenerators)
+        {
+            var effect = generator.GetComponent<ItemEffect>();
+            if (effect != null)
+            {
+                effect.ResetItem(); // önce içeriði sýfýrla
+            }
+
+            generator.gameObject.SetActive(false); // sonra görünmez yap
+        }
+
         foreach (var effect in effects)
         {
             if (generatorIndex >= itemGenerators.Count) break;
             if (!CanEffectBeShown(effect)) continue;
 
             var generator = itemGenerators[generatorIndex];
-            generator.gameObject.SetActive(true);
+            generator.gameObject.SetActive(true); // sadece kullanýlacaklarý göster
             generator.GenerateItemWithEffect(effect);
-
             generatorIndex++;
         }
     }
-
 
 
 }
