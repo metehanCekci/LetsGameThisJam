@@ -14,7 +14,12 @@ public class PauseScript : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseMenu.transform.Find("MenuBackground").gameObject.SetActive(true);
         pauseMenu.transform.Find("SettingsBackground").gameObject.SetActive(false);
-        Player.GetComponent<PlayerInput>().enabled = true;
+        if (Player == null)
+        {
+            
+        }
+        else {Player.GetComponent<PlayerInput>().enabled = true;}
+        
     }
 
     void Update()

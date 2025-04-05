@@ -21,7 +21,7 @@ public class SceneChangeScript : MonoBehaviour
     {
         
         StartCoroutine(FadeIn());
-        SceneManager.LoadScene(8);
+        StartCoroutine(FadeInAndLoadScene(8));
     }
     IEnumerator FadeIn()
     {
@@ -42,22 +42,29 @@ public class SceneChangeScript : MonoBehaviour
     }
     IEnumerator FadeOut()
     {
-        FadeOutAnim.gameObject.SetActive(true);
-        Color color = FadeOutAnim.color;
-        color.a = 1f;
-        FadeOutAnim.color = color;
-
-        float elapsed = 0f;
-        while (elapsed < fadeDuration)
+        if (FadeOutAnim == null)
         {
-            elapsed += Time.deltaTime;
-            color.a = 1f - Mathf.Clamp01(elapsed / fadeDuration);
-            FadeOutAnim.color = color;
             yield return null;
         }
-        color.a = 0f;
-        FadeOutAnim.color = color; 
-        FadeOutAnim.gameObject.SetActive(false);
+        else
+        {
+            FadeOutAnim.gameObject.SetActive(true);
+            Color color = FadeOutAnim.color;
+            color.a = 1f;
+            FadeOutAnim.color = color;
+
+            float elapsed = 0f;
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                color.a = 1f - Mathf.Clamp01(elapsed / fadeDuration);
+                FadeOutAnim.color = color;
+                yield return null;
+            }
+            color.a = 0f;
+            FadeOutAnim.color = color;
+            FadeOutAnim.gameObject.SetActive(false);
+        }
     }
     public void NextScene()
     {
@@ -75,6 +82,11 @@ public class SceneChangeScript : MonoBehaviour
 #else
             Application.Quit();
 #endif
+    }
+    public void mainMenu()
+    {
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(1));
     }
     public void loadLevel1()
     {
@@ -106,11 +118,7 @@ public class SceneChangeScript : MonoBehaviour
         Destroy(AudioManager.instance.gameObject);
         StartCoroutine(FadeInAndLoadScene(7));
     }
-    public void mainMenu()
-    {
-        Destroy(AudioManager.instance.gameObject);
-        StartCoroutine(FadeInAndLoadScene(1));
-    }
+    
     IEnumerator FadeInAndLoadScene(int sceneIndex)
     {
         yield return FadeIn(); // önce fade in bitsin
