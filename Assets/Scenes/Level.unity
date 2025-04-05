@@ -25524,6 +25524,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4523308395471155782, guid: 0455d2f951f53484aab204116d475c66, type: 3}
+      propertyPath: AmplitudeGain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4523308395471155782, guid: 0455d2f951f53484aab204116d475c66, type: 3}
+      propertyPath: FrequencyGain
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3689440267811492825, guid: 0455d2f951f53484aab204116d475c66, type: 3}
       propertyPath: Lens.FieldOfView
       value: 10
