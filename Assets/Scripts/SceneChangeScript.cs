@@ -6,39 +6,63 @@ using System.Collections;
 public class SceneChangeScript : MonoBehaviour
 {
     public SplashScreenFade SplashScreenFade;
-    public Image image;
+    public Image FadeInAnim;
+    public Image FadeOutAnim;
     public float fadeDuration = 1f;
 
     public void Start()
     {
-
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex>=1)
+        {
+            StartCoroutine(FadeOut());
+        }
     }
     public void StartGame()
     {
         
         StartCoroutine(FadeIn());
+        SceneManager.LoadScene(8);
     }
     IEnumerator FadeIn()
     {
-        Color color = image.color;
+        FadeInAnim.gameObject.SetActive(true);
+        Color color = FadeInAnim.color;
         color.a = 0f;
-        image.color = color;
+        FadeInAnim.color = color;
 
         float elapsed = 0f;
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
             color.a = Mathf.Clamp01(elapsed / fadeDuration);
-            image.color = color;
-            
+            FadeInAnim.color = color;
             yield return null;
         }
-        SceneManager.LoadScene(8);
+        
+    }
+    IEnumerator FadeOut()
+    {
+        FadeOutAnim.gameObject.SetActive(true);
+        Color color = FadeOutAnim.color;
+        color.a = 1f;
+        FadeOutAnim.color = color;
+
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = 1f - Mathf.Clamp01(elapsed / fadeDuration);
+            FadeOutAnim.color = color;
+            yield return null;
+        }
+        color.a = 0f;
+        FadeOutAnim.color = color; 
+        FadeOutAnim.gameObject.SetActive(false);
     }
     public void NextScene()
     {
-        SceneManager.LoadScene(GameManagerScript.instance.level + 1);
         GameManagerScript.instance.level += 1;
+        StartCoroutine(FadeInAndLoadScene(GameManagerScript.instance.level + 1));
     }
     public void QuitGame()
     {
@@ -54,36 +78,42 @@ public class SceneChangeScript : MonoBehaviour
     }
     public void loadLevel1()
     {
-        Destroy(MusicDontDestroyOnLoad.instance.gameObject);
-        SceneManager.LoadScene(2);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(2));
     }
     public void loadLevel2()
     {
-        Destroy(MusicDontDestroyOnLoad.instance.gameObject);
-        SceneManager.LoadScene(3);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(3));
     }
     public void loadLevel3()
     {
-        Destroy(MusicDontDestroyOnLoad.instance.gameObject);
-        SceneManager.LoadScene(4);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(4));
     }
     public void loadLevel4()
     {
-        Destroy(MusicDontDestroyOnLoad.instance.gameObject);
-        SceneManager.LoadScene(5);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(5));
     }
     public void loadLevel5()
     {
-        Destroy(MusicDontDestroyOnLoad.instance.gameObject);
-        SceneManager.LoadScene(6);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(6));
     }
     public void loadLevel6()
     {
-        Destroy(MusicDontDestroyOnLoad.instance.gameObject);
-        SceneManager.LoadScene(7);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(7));
     }
     public void mainMenu()
     {
-        SceneManager.LoadScene(1);
+        Destroy(AudioManager.instance.gameObject);
+        StartCoroutine(FadeInAndLoadScene(1));
+    }
+    IEnumerator FadeInAndLoadScene(int sceneIndex)
+    {
+        yield return FadeIn(); // önce fade in bitsin
+        SceneManager.LoadScene(sceneIndex); // sonra sahne geçsin
     }
 }

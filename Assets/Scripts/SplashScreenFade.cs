@@ -4,10 +4,12 @@ using System.Collections;
 
 public class SplashScreenFade : MonoBehaviour
 {
-    [SerializeField] Image splashScreenImage;
 
+    [SerializeField] Image splashScreenImage;
+    
     public AudioSource splashSound;
-    public AudioSource menuMusic;
+    public AudioSource menuMusic= AudioManager.instance.GetComponent<AudioSource>();
+    
 
     void Awake()
     {

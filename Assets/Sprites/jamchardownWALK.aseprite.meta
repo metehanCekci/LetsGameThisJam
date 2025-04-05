@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.5277778, y: -0.033613447}
+    pivot: {x: 0.4937941, y: 0.3082236}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -146,7 +146,7 @@ ScriptedImporter:
     uvTransform: {x: 48, y: 4}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.54285717, y: -0.050847456}
+    pivot: {x: 0.5341189, y: 0.30166245}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -167,7 +167,7 @@ ScriptedImporter:
     uvTransform: {x: 92, y: 4}
   - name: Frame_2
     originalName: 
-    pivot: {x: 0.5588235, y: -0.059829064}
+    pivot: {x: 0.52284086, y: 0.3009221}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -188,7 +188,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 132}
   - name: Frame_3
     originalName: 
-    pivot: {x: 0.54285717, y: -0.050847456}
+    pivot: {x: 0.52538013, y: 0.30166245}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -209,7 +209,7 @@ ScriptedImporter:
     uvTransform: {x: 135, y: 4}
   - name: Frame_4
     originalName: 
-    pivot: {x: 0.5277778, y: -0.033333335}
+    pivot: {x: 0.50229007, y: 0.32349655}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -230,7 +230,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_5
     originalName: 
-    pivot: {x: 0.5588235, y: -0.06837607}
+    pivot: {x: 0.5138452, y: 0.30021745}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -251,7 +251,7 @@ ScriptedImporter:
     uvTransform: {x: 46, y: 132}
   - name: Frame_6
     originalName: 
-    pivot: {x: 0.5588235, y: -0.059322033}
+    pivot: {x: 0.531837, y: 0.30614778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -272,7 +272,7 @@ ScriptedImporter:
     uvTransform: {x: 178, y: 4}
   - name: Frame_7
     originalName: 
-    pivot: {x: 0.5588235, y: -0.06896552}
+    pivot: {x: 0.5408325, y: 0.29753217}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
