@@ -13,7 +13,8 @@ public class ItemEffect : MonoBehaviour
         AttackRange,
         GoldAmount,
         GoldMultiplier,
-        AttackCooldown
+        AttackCooldown,
+        Lifesteal
     }
 
     public EffectType effectType;
@@ -82,6 +83,8 @@ public class ItemEffect : MonoBehaviour
             case EffectType.AttackRange: GameManagerScript.instance.AttackRange += amount; break;
             case EffectType.GoldMultiplier: GameManagerScript.instance.goldMultiplier += amount; break;
             case EffectType.AttackCooldown: GameManagerScript.instance.AttackCooldown -= amount; break;
+            case EffectType.Lifesteal: GameManagerScript.instance.Lifesteal += amount; break;
+
         }
 
         isPurchased = true;

@@ -4,38 +4,50 @@ using System.Collections;
 
 public class SplashScreenFade : MonoBehaviour
 {
-
     [SerializeField] Image splashScreenImage;
-    
     public AudioSource splashSound;
-    public AudioSource menuMusic= AudioManager.instance.GetComponent<AudioSource>();
-    
+    public AudioSource menuMusic;
+
+    [SerializeField] float fadeDuration = 1.5f;
 
     void Awake()
     {
-        StartCoroutine(PlaySplashThenMenuMusic());
+        StartCoroutine(PlaySplashThenFadeOut());
     }
 
-    IEnumerator PlaySplashThenMenuMusic()
+    IEnumerator PlaySplashThenFadeOut()
     {
-        // Preload the menu music to avoid lag
+        // Müzik ön yükleme (lag önleme)
         if (menuMusic.clip.loadState != AudioDataLoadState.Loaded)
             menuMusic.clip.LoadAudioData();
 
-        // Play splash sound
+        // Splash sesi çal
         splashSound.Play();
 
-        // Start menu music silently and paused
+        // Menü müziðini sessizce baþlat ve durdur
         menuMusic.Play();
         menuMusic.Pause();
 
-        // Wait until splashSound is over
+        // Splash sesi bitene kadar bekle
         yield return new WaitForSeconds(splashSound.clip.length);
 
-        // Unpause menu music exactly after splash ends
+        // Menü müziðini baþlat
         menuMusic.UnPause();
 
-        // Hide splash screen
+        // Splash ekranýný fade out yap
+        float elapsed = 0f;
+        Color color = splashScreenImage.color;
+        color.a = 1f;
+        splashScreenImage.color = color;
+
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = 1f - Mathf.Clamp01(elapsed / fadeDuration);
+            splashScreenImage.color = color;
+            yield return null;
+        }
+
         splashScreenImage.gameObject.SetActive(false);
     }
 }

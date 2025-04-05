@@ -14,6 +14,7 @@ public class GameManagerScript : MonoBehaviour
     public float Health;
     public float AttackPower;
     public float GoldAmount;
+    public float Lifesteal;
 
     public float WalkSpeed;
     public float RunSpeed;
