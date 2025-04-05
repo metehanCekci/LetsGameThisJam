@@ -12,12 +12,12 @@ public class ItemTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     void Start()
     {
         tooltip.SetActive(false);
-        effect = GetComponentInParent<ItemEffect>();
+        effect = GetComponentInParent<ItemEffect>(); // Hem Item Icon hem Gray için çalýþýr
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (tooltip != null && effect != null)
+        if (tooltip != null && effect != null && !effect.IsPurchased())
         {
             tooltip.SetActive(true);
             tooltipText.text = $"{TranslateEffect(effect.effectType)} {effect.amount}";
@@ -27,7 +27,9 @@ public class ItemTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         if (tooltip != null)
+        {
             tooltip.SetActive(false);
+        }
     }
 
     string TranslateEffect(ItemEffect.EffectType type)
@@ -40,9 +42,9 @@ public class ItemTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             case ItemEffect.EffectType.WalkSpeed: return "Yürüme Hýzý + ";
             case ItemEffect.EffectType.RunSpeed: return "Koþma Hýzý + ";
             case ItemEffect.EffectType.AttackRange: return "Saldýrý Menzili + ";
-            case ItemEffect.EffectType.GoldAmount: return "Altýn + ";
+            case ItemEffect.EffectType.GoldAmount: return "Altýn +";
             case ItemEffect.EffectType.GoldMultiplier: return "Altýn Çarpaný + ";
-            case ItemEffect.EffectType.AttackCooldown: return "Saldýrý Bekleme Süresi - ";
+            case ItemEffect.EffectType.AttackCooldown: return "Saldýrý Bekleme Süresi  ";
             default: return type.ToString();
         }
     }

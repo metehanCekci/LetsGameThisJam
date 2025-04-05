@@ -91,6 +91,29 @@ public class ItemEffect : MonoBehaviour
             grayOverlay.SetActive(true);
 
         Debug.Log($"{effectType} etkisi uygulandı, {itemCost} altın harcandı.");
+        Transform alindiText = transform.Find("Alindi");
+        if (alindiText != null)
+        {
+            alindiText.gameObject.SetActive(true);
+        }
+    }
+    public bool IsPurchased()
+    {
+        return isPurchased;
+    }
+    public void ResetItem()
+    {
+        isPurchased = false;
+
+        if (grayOverlay != null)
+            grayOverlay.SetActive(true);
+
+        if (button != null)
+            button.interactable = true;
+
+        Transform alindiText = transform.Find("Alindi");
+        if (alindiText != null)
+            alindiText.gameObject.SetActive(false);
     }
 
 }
