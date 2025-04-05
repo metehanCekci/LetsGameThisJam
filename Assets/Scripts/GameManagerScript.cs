@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour
     public byte level = 0;
 
     public int MaxStamina;
+    public int MaxHealth;
     public int Health;
     public int AttackPower;
     public int GoldAmount;
