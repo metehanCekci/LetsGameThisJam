@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         if (isInvincible) return;
 
         GameManagerScript.instance.Health -= damage;
-        Debug.Log($"Player took {damage} damage. Health: {GameManagerScript.instance.Health}");
+        
 
         if (GameManagerScript.instance.Health <= 0)
         {

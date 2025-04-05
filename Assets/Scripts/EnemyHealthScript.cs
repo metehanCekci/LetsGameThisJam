@@ -1,11 +1,9 @@
-// EnemyHealthScript.cs
-
 using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -18,7 +16,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        cameraShake = FindAnyObjectByType<CameraShake>(); 
+        cameraShake = FindAnyObjectByType<CameraShake>();
 
         if (spriteRenderer != null)
         {
@@ -26,19 +24,23 @@ public class EnemyHealthScript : MonoBehaviour
         }
     }
 
-void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.CompareTag("Hitbox"))
+    void OnTriggerEnter2D(Collider2D other)
     {
-        TakeDamage(10);
-
+        if (other.CompareTag("Hitbox"))
+        {
+            TakeDamage(10);
+        }
     }
-}
 
-
-
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
+        // Kritik hasar hesaplama
+        if (Random.value < GameManagerScript.instance.critChance)
+        {
+            damage = Mathf.RoundToInt(damage * GameManagerScript.instance.critMultiplier);
+            Debug.Log("Kritik vuruþ! Yeni Hasar: " + damage);
+        }
+
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage. Health: {currentHealth}");
 
@@ -49,22 +51,22 @@ void OnTriggerEnter2D(Collider2D other)
 
         if (cameraShake != null)
         {
-            cameraShake.ShakeCamera(2f, 0.1f); // Singleton yok, referans ile Ã§aÄŸÄ±r
+            cameraShake.ShakeCamera(2f, 0.1f);
+        }
+
+        // Can çalma
+        if (GameManagerScript.instance.Lifesteal > 0)
+        {
+            GameManagerScript.instance.Health += GameManagerScript.instance.Lifesteal;
+
+            if (GameManagerScript.instance.Health > GameManagerScript.instance.MaxHealth)
+                GameManagerScript.instance.Health = GameManagerScript.instance.MaxHealth;
         }
 
         if (currentHealth <= 0)
         {
             Die();
         }
-        if (GameManagerScript.instance.Lifesteal > 0)
-        {
-            GameManagerScript.instance.Health += GameManagerScript.instance.Lifesteal;
-
-            
-            if (GameManagerScript.instance.Health > GameManagerScript.instance.MaxHealth)
-                GameManagerScript.instance.Health = GameManagerScript.instance.MaxHealth;
-        }
-
     }
 
     System.Collections.IEnumerator FlashRed()
@@ -88,7 +90,8 @@ void OnTriggerEnter2D(Collider2D other)
         Destroy(gameObject);
     }
 
-
-
-
+    public void TakeDamageFromPlayer(int damage, Transform attacker)
+    {
+        TakeDamage(damage);
+    }
 }

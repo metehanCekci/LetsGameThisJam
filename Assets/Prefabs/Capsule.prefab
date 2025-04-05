@@ -11,13 +11,15 @@ GameObject:
   - component: {fileID: 5107758485872521333}
   - component: {fileID: 2895136691896168867}
   - component: {fileID: 5556090006014030698}
+  - component: {fileID: 1867278508698095568}
+  - component: {fileID: 3782898436657707101}
   m_Layer: 0
   m_Name: Slash
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5107758485872521333
 Transform:
   m_ObjectHideFlags: 0
@@ -96,6 +98,35 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1867278508698095568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717269145110466232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d68c640d3459d745b1471ca04a02183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chainRange: 3
+  maxChains: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &3782898436657707101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717269145110466232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6849be6c275b1074ea57d41a42891978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3973118696057897933
 GameObject:
   m_ObjectHideFlags: 0

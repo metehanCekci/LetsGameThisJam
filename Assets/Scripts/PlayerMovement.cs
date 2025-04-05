@@ -67,8 +67,6 @@ public class PlayerMovement : MonoBehaviour
         
         moveInput = context.ReadValue<Vector2>();
 
-        if (animator.GetBool("Attacking"))
-        return;
 
         if (moveInput.sqrMagnitude < 0.01f)
         {
@@ -172,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator PerformSlash()
     {
         canSlash = false;
-        yield return new WaitForSeconds(0.2f);
+        
 
         Vector3 spawnOffset = Vector3.zero;
 
@@ -192,10 +190,11 @@ public class PlayerMovement : MonoBehaviour
         slash.SetActive(true);
 
         Destroy(slash, slashLifetime);
-
-        yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown);
-        canSlash = true;
+        yield return new WaitForSeconds(0.2f);
         animator.SetBool("Attacking", false);
+        yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown-0.2f);
+        canSlash = true;
+        
     }
 
 }
