@@ -53,6 +53,15 @@ public class EnemyHealthScript : MonoBehaviour
         {
             Die();
         }
+        if (GameManagerScript.instance.Lifesteal > 0)
+        {
+            GameManagerScript.instance.Health += GameManagerScript.instance.Lifesteal;
+
+            
+            if (GameManagerScript.instance.Health > GameManagerScript.instance.MaxHealth)
+                GameManagerScript.instance.Health = GameManagerScript.instance.MaxHealth;
+        }
+
     }
 
     System.Collections.IEnumerator FlashRed()

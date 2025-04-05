@@ -24,9 +24,10 @@ public class MarketManager : MonoBehaviour
             ItemEffect.EffectType.RunSpeed,
             ItemEffect.EffectType.AttackRange,
             ItemEffect.EffectType.GoldMultiplier,
-            ItemEffect.EffectType.AttackCooldown
-        };
-
+            ItemEffect.EffectType.AttackCooldown,
+            ItemEffect.EffectType.Lifesteal
+        }
+        ;
         ShuffleList(effects);
 
         int generatorIndex = 0;
@@ -94,7 +95,8 @@ public class MarketManager : MonoBehaviour
         ItemEffect.EffectType.RunSpeed,
         ItemEffect.EffectType.AttackRange,
         ItemEffect.EffectType.GoldMultiplier,
-        ItemEffect.EffectType.AttackCooldown
+        ItemEffect.EffectType.AttackCooldown,
+        ItemEffect.EffectType.Lifesteal
     };
 
         ShuffleList(effects);
