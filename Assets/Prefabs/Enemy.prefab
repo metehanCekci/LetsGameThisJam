@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1418377049710005747}
   - component: {fileID: 7909570710786191473}
   - component: {fileID: 8451534123536977230}
-  - component: {fileID: 1588820353224415289}
   - component: {fileID: -7985085711629997457}
+  - component: {fileID: 5290198449482794155}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Hurtbox
@@ -156,25 +156,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &1588820353224415289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9068911619565435055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61497a198665d9c4a8fac7e22ca9649a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  followRange: 999
-  attackRange: 5
-  shootDelay: 2
-  burstCount: 3
-  timeBetweenShots: 0.1
-  bulletPrefab: {fileID: 2460070185247086032}
 --- !u!114 &-7985085711629997457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +170,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 12
   flashDuration: 0.1
+  healthOrbPrefab: {fileID: 7062492235934781696, guid: 6ca11c4703dfaac45b7018d9ccdf196a, type: 3}
+--- !u!114 &5290198449482794155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068911619565435055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2fb30d79ea0e04194cc136eb37cc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  followRange: 10
+  attackRange: 5
+  shootDelay: 1
+  burstCount: 3
+  timeBetweenShots: 0.1
+  bulletPrefab: {fileID: 2460070185247086032}
 --- !u!1001 &5113923537185569802
 PrefabInstance:
   m_ObjectHideFlags: 0
