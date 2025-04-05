@@ -8,11 +8,11 @@ public class EnemySpawnerScript : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
     public float spawnInterval = 5f;
-    public int maxEnemies = 20;
+    public int maxEnemies = 2;
 
     private int currentEnemyCount = 0;
     private int totalSpawnedEnemies = 0;
-    private int totalEnemiesToSpawn = 20; // örnek: tüm düşmanlar bir defa üretilecekse
+    private int totalEnemiesToSpawn = 2; // örnek: tüm düşmanlar bir defa üretilecekse
 
     void Start()
     {
@@ -68,6 +68,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
 void LoadNextScene()
 {
+    GameManagerScript.instance.level++;
     SceneManager.LoadScene("RandomShop");
 }
 
