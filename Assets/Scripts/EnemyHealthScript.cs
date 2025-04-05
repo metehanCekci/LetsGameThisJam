@@ -17,7 +17,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        cameraShake = FindAnyObjectByType<CameraShake>(); // Kamera sarsıntısını bul
+        cameraShake = FindAnyObjectByType<CameraShake>(); 
 
         if (spriteRenderer != null)
         {
