@@ -9,8 +9,8 @@ public class UIStatusBars : MonoBehaviour
     [Header("Stamina Bar")]
     public Image staminaFillImage;
 
-    private float currentStamina;
     private float displayedHealth;
+    private float displayedStamina;
 
     void Update()
     {
@@ -26,9 +26,9 @@ public class UIStatusBars : MonoBehaviour
         healthFillImage.fillAmount = healthPercent;
 
         // Smoothly update stamina
-        currentStamina = Mathf.Lerp(currentStamina, GameManagerScript.instance.MaxStamina, Time.deltaTime * 10f);
+        displayedStamina = Mathf.Lerp(displayedStamina, GameManagerScript.instance.Stamina, Time.deltaTime * 10f);
         float staminaPercent = GameManagerScript.instance.MaxStamina > 0
-            ? currentStamina / GameManagerScript.instance.MaxStamina
+            ? displayedStamina / GameManagerScript.instance.MaxStamina
             : 0f;
         staminaFillImage.fillAmount = staminaPercent;
     }
