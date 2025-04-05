@@ -12,7 +12,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
     private int currentEnemyCount = 0;
     private int totalSpawnedEnemies = 0;
-    private int totalEnemiesToSpawn = 2; // örnek: tüm düşmanlar bir defa üretilecekse
+    public int totalEnemiesToSpawn = 10; // örnek: tüm düşmanlar bir defa üretilecekse
 
     void Start()
     {
