@@ -10,8 +10,9 @@ public class SplashScreenFade : MonoBehaviour
 
     [SerializeField] float fadeDuration = 1.5f;
 
-    void Awake()
+    public void Start()
     {
+        menuMusic = AudioManager.instance.GetComponent<AudioSource>();
         StartCoroutine(PlaySplashThenFadeOut());
     }
 

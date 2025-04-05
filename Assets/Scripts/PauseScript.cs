@@ -1,16 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseScript : MonoBehaviour
 {
+    public SceneChangeScript sceneChangeScript;
     public GameObject Player;
     public GameObject pauseMenu;
     public bool active = false;
     public bool settingsActive = false;
     void Start()
     {
-        
+        sceneChangeScript = FindFirstObjectByType<SceneChangeScript>();
         pauseMenu.SetActive(false);
         pauseMenu.transform.Find("MenuBackground").gameObject.SetActive(true);
         pauseMenu.transform.Find("SettingsBackground").gameObject.SetActive(false);
@@ -57,15 +59,12 @@ public class PauseScript : MonoBehaviour
             
         }
     }
+
     public void SettingsButton()
     {
         pauseMenu.transform.Find("MenuBackground").gameObject.SetActive(false);
         pauseMenu.transform.Find("SettingsBackground").gameObject.SetActive(true);
         settingsActive = true;
-    }
-    public void QuitButton()
-    {
-        SceneManager.LoadScene(1);
     }
     public void SettingsBackButton()
     {
@@ -78,5 +77,17 @@ public class PauseScript : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         Player.GetComponent<PlayerInput>().enabled = true;
+    }
+    public void QuitButton()
+    {
+        active = false;
+        pauseMenu.SetActive(false);
+        StartCoroutine(FadeInAndLoadScene(1));
+    }
+
+    public IEnumerator FadeInAndLoadScene(int sceneIndex)
+    {
+        yield return sceneChangeScript.FadeIn(); // önce fade in bitsin
+        SceneManager.LoadScene(sceneIndex);      // sonra sahne geçsin
     }
 }
