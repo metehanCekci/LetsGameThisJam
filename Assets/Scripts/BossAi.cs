@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BossAi : MonoBehaviour
 {
@@ -101,14 +102,30 @@ public class BossAi : MonoBehaviour
         float spawnInterval = 0.2f;
         int projectileCount = ProjectilesParent.transform.childCount;
 
+        // Create a list of indices to randomly pick from
+        List<int> availableIndices = new List<int>();
+        for (int i = 0; i < projectileCount; i++)
+        {
+            availableIndices.Add(i);
+        }
+
+        // Clamp iterations to the available number of projectiles
+        iterations = Mathf.Min(iterations, projectileCount);
+
         for (int i = 0; i < iterations; i++)
         {
-            int randIndex = Random.Range(0, projectileCount);
-            GameObject clone = Instantiate(ProjectilesParent.transform.GetChild(randIndex).gameObject);
+            // Pick a random index from available ones
+            int randListIndex = Random.Range(0, availableIndices.Count);
+            int chosenIndex = availableIndices[randListIndex];
+            availableIndices.RemoveAt(randListIndex);
+
+            GameObject clone = Instantiate(ProjectilesParent.transform.GetChild(chosenIndex).gameObject);
             clone.SetActive(true);
+
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+
 
 IEnumerator Swipe()
 {
@@ -143,14 +160,25 @@ IEnumerator Swipe()
     Transform restPos = isLeft ? LeftRestPos : RightRestPos;
 
     // === Step 1: Move hand slowly to starting swipe position
-    yield return StartCoroutine(MoveToPosition(hand.transform, startPos.position));
+    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, startPos.position, attackMoveSpeed * 1.5f));
 
-    // === Step 2: Fast swipe to end position
-    yield return StartCoroutine(MoveToPosition(hand.transform, endPos.position));
-
+    hand.GetComponent<CircleCollider2D>().enabled = true;
+    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, endPos.position, attackMoveSpeed * 5f));
+    hand.GetComponent<CircleCollider2D>().enabled = false;
     // === Step 3: Fast return to rest position
-    yield return StartCoroutine(MoveToPosition(hand.transform, restPos.position));
+    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, restPos.position, attackMoveSpeed * 3f));
 }
+
+// New coroutine to move with different speed
+IEnumerator MoveToPositionWithSpeed(Transform hand, Vector3 target, float moveSpeed)
+{
+    while (Vector3.Distance(hand.position, target) > 0.05f)
+    {
+        hand.position = Vector3.MoveTowards(hand.position, target, moveSpeed * Time.deltaTime);
+        yield return null;
+    }
+}
+
 
 
 

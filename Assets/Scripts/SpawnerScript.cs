@@ -57,7 +57,7 @@ public class EnemySpawnerScript : MonoBehaviour
     void EnemyDied()
     {
         currentEnemyCount--;
-
+        GameManagerScript.instance.GoldAmount += (10 * Mathf.RoundToInt(GameManagerScript.instance.goldMultiplier));
         // Hepsi öldü mü?
         if (totalSpawnedEnemies >= totalEnemiesToSpawn && currentEnemyCount <= 0)
         {
