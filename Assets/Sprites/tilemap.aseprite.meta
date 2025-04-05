@@ -504,7 +504,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_17
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -525,7 +525,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_18
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -546,7 +546,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_19
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -567,7 +567,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_20
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -588,7 +588,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_21
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -609,7 +609,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_22
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -630,7 +630,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_23
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -651,7 +651,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_24
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -672,7 +672,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_25
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -693,7 +693,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_26
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -714,7 +714,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: tilemap_27
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
