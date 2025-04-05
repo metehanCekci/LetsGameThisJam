@@ -45,7 +45,7 @@ public class EnemyHealthScript : MonoBehaviour
 
         if (cameraShake != null)
         {
-            cameraShake.ShakeCamera(5f, 0.2f); // Singleton yok, referans ile çağır
+            cameraShake.ShakeCamera(5f, 0.1f); // Singleton yok, referans ile çağır
         }
 
         if (currentHealth <= 0)

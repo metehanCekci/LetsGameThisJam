@@ -134,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && canSlash)
         {
+            
             StartCoroutine(PerformSlash());
         }
     }
@@ -166,18 +167,21 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PerformSlash()
     {
+        
         canSlash = false;
 
         Vector3 offset = (Vector3)(lastMoveDirection.normalized * GameManagerScript.instance.AttackRange);
         Vector3 spawnPosition = firePoint.position + offset;
-
+        animator.SetBool("Attacking", true);
         GameObject slash = Instantiate(Slash, spawnPosition, Quaternion.identity);
         slash.transform.parent = Slash.transform.parent;
         slash.SetActive(true);
 
         Destroy(slash, slashLifetime);
 
+        
         yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown);
         canSlash = true;
+        animator.SetBool("Attacking", false);
     }
 }
