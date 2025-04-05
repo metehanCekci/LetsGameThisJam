@@ -32,27 +32,27 @@ public class SceneChangeScript : MonoBehaviour
     }
     public void loadLevel1()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(3);
     }
     public void loadLevel2()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(4);
     }
     public void loadLevel3()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(5);
     }
     public void loadLevel4()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(6);
     }
     public void loadLevel5()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(7);
     }
     public void loadLevel6()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(8);
     }
     public void mainMenu()
     {

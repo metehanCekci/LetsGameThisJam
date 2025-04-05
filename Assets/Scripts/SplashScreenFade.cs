@@ -1,6 +1,6 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SplashScreenFade : MonoBehaviour
 {
@@ -8,51 +8,32 @@ public class SplashScreenFade : MonoBehaviour
 
     public AudioSource splashSound;
     public AudioSource menuMusic;
-    public float fadeDuration = 1.0f;
-    public float fadeStartBeforeEnd = 1f; // Fade'in müzik bitiþinden kaç saniye önce baþlayacaðý
 
     void Awake()
     {
-        PlaySound();
+        StartCoroutine(PlaySplashThenMenuMusic());
     }
 
-    void PlaySound()
+    IEnumerator PlaySplashThenMenuMusic()
     {
+        // Preload the menu music to avoid lag
+        if (menuMusic.clip.loadState != AudioDataLoadState.Loaded)
+            menuMusic.clip.LoadAudioData();
+
+        // Play splash sound
         splashSound.Play();
-        StartCoroutine(StartFadeBeforeMusicEnds());
-    }
 
-    IEnumerator StartFadeBeforeMusicEnds()
-    {
-        float waitTime = splashSound.clip.length - fadeStartBeforeEnd;
-        yield return new WaitForSeconds(waitTime);
-
-        StartCoroutine(FadeOut());
-
-        yield return new WaitForSeconds(0.5f);
-
-      
+        // Start menu music silently and paused
         menuMusic.Play();
-        // Kalan süre kadar bekle, sonra menü müziðini baþlat
-        yield return new WaitForSeconds(fadeStartBeforeEnd);
-        
-    }
+        menuMusic.Pause();
 
-    IEnumerator FadeOut()
-    {
-        float t = 0f;
-        Color color = splashScreenImage.color;
+        // Wait until splashSound is over
+        yield return new WaitForSeconds(splashSound.clip.length);
 
-        while (t < fadeDuration)
-        {
-            t += Time.deltaTime;
-            color.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
-            splashScreenImage.color = color;
-            yield return null;
-        }
+        // Unpause menu music exactly after splash ends
+        menuMusic.UnPause();
 
-        color.a = 0f;
-        splashScreenImage.color = color;
+        // Hide splash screen
         splashScreenImage.gameObject.SetActive(false);
     }
 }
