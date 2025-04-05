@@ -9,6 +9,7 @@ public class GameManagerScript : MonoBehaviour
     public int MaxStamina;
     public int Health;
     public int AttackPower;
+    public int GoldAmount;
 
     public int WalkSpeed;
     public int RunSpeed;
@@ -22,7 +23,7 @@ public class GameManagerScript : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // varsa
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
