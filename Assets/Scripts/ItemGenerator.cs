@@ -32,6 +32,9 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.WalkSpeed: multiplier = 15f; break;
             case ItemEffect.EffectType.RunSpeed: multiplier = 15f; break;
             case ItemEffect.EffectType.AttackRange: multiplier = 12f; break;
+            case ItemEffect.EffectType.GoldAmount: multiplier = 1f; break;
+            case ItemEffect.EffectType.GoldMultiplier: multiplier = 20f; break;
+            case ItemEffect.EffectType.AttackCooldown: multiplier = 4f; break;
         }
 
         return Mathf.RoundToInt(value * multiplier);
