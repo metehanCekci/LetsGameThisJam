@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,9 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float slashLifetime = 0.2f;
     public int currentMoveSpeed;
     private Animator animator;
-    public bool lookingLeft;
-    public bool lookingUp;
-    public bool idle;
+    public bool currentDirXorY;
+    private SpriteRenderer spriteRenderer;
 
 
     private Vector2 lastMoveDirection = Vector2.right;
@@ -30,39 +30,7 @@ public class PlayerMovement : MonoBehaviour
         currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
         currentStamina = GameManagerScript.instance.MaxStamina;
         animator = this.gameObject.GetComponent<Animator>();
-    }
-    private void Update(){
-        if (idle)
-        {
-            animator.SetBool("idle",true);
-            if (lookingLeft)
-            {
-                animator.SetBool("", true);
-            }
-            else if (lookingUp)
-            {
-                animator.SetBool("LookingUp", true);
-            }
-            else
-            {
-                
-            }
-        }
-        
-        else
-        {
-            if (lookingLeft)
-            {
-                if (lookingUp)
-                {
-
-                }
-                else
-                {
-
-                }
-            }
-        }
+        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -101,46 +69,58 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("goingDown", false);
             animator.SetBool("goingLeft", false);
             animator.SetBool("goingRight", false);
+            if (currentDirXorY)
+            {
+                animator.SetBool("CurrentDirXorY", true);
+            }
+            else
+            {
+                animator.SetBool("CurrentDirXorY", false);
+
+            }
+
             return;
-            idle = true;
+            
         }
 
         if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
         {
-            if (moveInput.x > 0)
+            if (moveInput.x > 0)//right
             {
                 animator.SetBool("goingRight", true);
-                animator.SetBool("goingLeft", false);
-                animator.SetBool("goingUp", false);
-                animator.SetBool("goingDown", false);
-                lookingLeft = false;
-            }
-            else
-            {
-                animator.SetBool("goingRight", false);
                 animator.SetBool("goingLeft", true);
                 animator.SetBool("goingUp", false);
                 animator.SetBool("goingDown", false);
-                lookingLeft = true;
+                currentDirXorY = true; //true X false Y
+                spriteRenderer.flipX = false;
+            }
+            else//left
+            {
+                animator.SetBool("goingRight", true);
+                animator.SetBool("goingLeft", true);
+                animator.SetBool("goingUp", false);
+                animator.SetBool("goingDown", false);
+                currentDirXorY = true;
+                spriteRenderer.flipX = true;
             }
         }
         else
         {
-            if (moveInput.y > 0)
+            if (moveInput.y > 0)//up
             {
                 animator.SetBool("goingUp", true);
-                animator.SetBool("goingDown", false);
-                animator.SetBool("goingRight", false);
-                animator.SetBool("goingLeft", false);
-                lookingUp = true;
-            }
-            else
-            {
-                animator.SetBool("goingUp", false);
                 animator.SetBool("goingDown", true);
                 animator.SetBool("goingRight", false);
                 animator.SetBool("goingLeft", false);
-                lookingUp = false;
+                currentDirXorY = false;
+            }
+            else//down
+            {
+                animator.SetBool("goingUp", true);
+                animator.SetBool("goingDown", true);
+                animator.SetBool("goingRight", false);
+                animator.SetBool("goingLeft", false);
+                currentDirXorY = false;
             }
         }
     }
