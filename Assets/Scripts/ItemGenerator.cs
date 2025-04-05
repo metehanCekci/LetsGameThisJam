@@ -1,17 +1,24 @@
-using UnityEngine;
-using TMPro; // <-- Bunu ekle
+ï»¿using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class ItemGenerator : MonoBehaviour
 {
     public ItemEffect itemEffect;
-    public TextMeshProUGUI costText; // <-- TMP Text için doðru tip
+    public TextMeshProUGUI costText;
 
-    void Start()
+    public void GenerateItemWithEffect(ItemEffect.EffectType fixedEffect)
     {
-        
-    }
+        int value = Random.Range(10, 31);
+        int cost = CalculateCost(fixedEffect, value);
 
+        itemEffect.effectType = fixedEffect;
+        itemEffect.amount = value;
+        itemEffect.itemCost = cost;
+
+        if (costText != null)
+            costText.text = $"{cost}G";
+    }
 
     int CalculateCost(ItemEffect.EffectType type, int value)
     {
@@ -29,18 +36,4 @@ public class ItemGenerator : MonoBehaviour
 
         return Mathf.RoundToInt(value * multiplier);
     }
-
-    public void GenerateItemWithEffect(ItemEffect.EffectType fixedEffect)
-    {
-        int value = Random.Range(10, 31);
-        int cost = CalculateCost(fixedEffect, value);
-
-        itemEffect.effectType = fixedEffect;
-        itemEffect.amount = value;
-        itemEffect.itemCost = cost;
-
-        if (costText != null)
-            costText.text = $"{cost}G";
-    }
-
 }

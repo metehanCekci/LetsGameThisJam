@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e00a82377666174f8dd49569d44fd64
+guid: 818cb43c39d311f49bb53d34bae1b489
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,51 +123,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: jamchardownIDLE
     originalName: 
-    pivot: {x: 0.5294118, y: -0.040983602}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 34
-      height: 122
-    spriteID: b386b858618eb6144a47a5712e44d373
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5666667, y: -0.058823533}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 46
-      y: 4
-      width: 30
-      height: 119
-    spriteID: 19b47abe0d96b1a4bafce43ced0fe69c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 46, y: 4}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.47222224, y: -0.016}
+    pivot: {x: 0.5277778, y: -0.03305785}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -176,8 +134,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 36
-      height: 125
-    spriteID: 4a3343704aaa51b43b5dc652dd9171ae
+      height: 121
+    spriteID: fa2c441c581ecb542b1ba0934a6920d3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -186,72 +144,24 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.53125, y: -0.067226894}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 90
-      y: 4
-      width: 32
-      height: 119
-    spriteID: 5e8d2045c50bb624ea962245a744050f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 90, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 737331722
-    name: jamcharUPWALK
+    guid: -1491281912
+    name: jamchardownIDLE
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: jamchardownIDLE
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 46
-        y: 5
-        width: 34
-        height: 122
-      spriteId: b386b858618eb6144a47a5712e44d373
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 47
-        y: 7
-        width: 30
-        height: 119
-      spriteId: 19b47abe0d96b1a4bafce43ced0fe69c
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 47
-        y: 2
+        x: 45
+        y: 4
         width: 36
-        height: 125
-      spriteId: 4a3343704aaa51b43b5dc652dd9171ae
-    - name: Frame_3
-      frameIndex: 3
-      additiveSortOrder: 0
-      cellRect:
-        x: 47
-        y: 8
-        width: 32
-        height: 119
-      spriteId: 5e8d2045c50bb624ea962245a744050f
+        height: 121
+      spriteId: fa2c441c581ecb542b1ba0934a6920d3
     linkedCells: []
     parentIndex: -1
   platformSettings:
