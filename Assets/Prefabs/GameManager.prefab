@@ -59,6 +59,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   MaxStamina: 100
+  critChance: 0.1
+  critMultiplier: 0.2
   Stamina: 0
   MaxHealth: 500
   Health: 500

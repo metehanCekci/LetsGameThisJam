@@ -41,6 +41,7 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.GoldMultiplier: return 0.25f;
             case ItemEffect.EffectType.AttackCooldown: return -0.1f;
             case ItemEffect.EffectType.Lifesteal: return 1f;
+            case ItemEffect.EffectType.CritChance: return 0.1f;
             default: return 1f;
         }
     }
@@ -58,6 +59,8 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.GoldMultiplier: return 100f;
             case ItemEffect.EffectType.AttackCooldown: return 80f;
             case ItemEffect.EffectType.Lifesteal: return 100f;
+            case ItemEffect.EffectType.CritChance: return 60f;
+
             default: return 100f;
         }
     }

@@ -10,8 +10,6 @@ public class EnemyHealthScript : MonoBehaviour
     public float flashDuration = 0.1f;
     public GameObject healthOrbPrefab;
 
-    private bool hasTakenChainDamage = false;
-
     private CameraShake cameraShake;
 
     void Start()
@@ -36,18 +34,31 @@ public class EnemyHealthScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        // Kritik hasar hesaplama
+        if (Random.value < GameManagerScript.instance.critChance)
+        {
+            damage = Mathf.RoundToInt(damage * GameManagerScript.instance.critMultiplier);
+            Debug.Log("Kritik vuruþ! Yeni Hasar: " + damage);
+        }
+
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage. Health: {currentHealth}");
 
         if (spriteRenderer != null)
+        {
             StartCoroutine(FlashRed());
+        }
 
         if (cameraShake != null)
+        {
             cameraShake.ShakeCamera(2f, 0.1f);
+        }
 
+        // Can çalma
         if (GameManagerScript.instance.Lifesteal > 0)
         {
             GameManagerScript.instance.Health += GameManagerScript.instance.Lifesteal;
+
             if (GameManagerScript.instance.Health > GameManagerScript.instance.MaxHealth)
                 GameManagerScript.instance.Health = GameManagerScript.instance.MaxHealth;
         }
@@ -58,50 +69,6 @@ public class EnemyHealthScript : MonoBehaviour
         }
     }
 
-    public void TakeDamageFromPlayer(int damage, Transform attacker)
-    {
-        if (hasTakenChainDamage) return;
-
-        hasTakenChainDamage = true;
-        TakeDamage(damage);
-
-        if (GameManagerScript.instance.hasElectricSword)
-        {
-            ElectricChain(attacker);
-        }
-
-        Invoke(nameof(ResetChainFlag), 0.1f);
-    }
-
-    void ResetChainFlag()
-    {
-        hasTakenChainDamage = false;
-    }
-
-    void ElectricChain(Transform attacker)
-    {
-        float chainRange = 4f;
-        int maxChains = 3;
-        int chains = 0;
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, chainRange);
-
-        foreach (var enemy in hitEnemies)
-        {
-            if (enemy.gameObject == gameObject) continue;
-            if (!enemy.CompareTag("Enemy")) continue;
-
-            var enemyHealth = enemy.GetComponent<EnemyHealthScript>();
-            if (enemyHealth != null && enemyHealth.currentHealth > 0)
-            {
-                enemyHealth.TakeDamageFromPlayer(Mathf.RoundToInt(GameManagerScript.instance.AttackPower), transform);
-                chains++;
-                if (chains >= maxChains)
-                    break;
-            }
-        }
-    }
-
     System.Collections.IEnumerator FlashRed()
     {
         spriteRenderer.color = Color.red;
@@ -109,13 +76,22 @@ public class EnemyHealthScript : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
+    public event System.Action OnDeath;
+
     void Die()
     {
+        OnDeath?.Invoke();
+
         if (healthOrbPrefab != null)
+        {
             Instantiate(healthOrbPrefab, transform.position, Quaternion.identity);
+        }
 
         Destroy(gameObject);
     }
 
-    public event System.Action OnDeath;
+    public void TakeDamageFromPlayer(int damage, Transform attacker)
+    {
+        TakeDamage(damage);
+    }
 }

@@ -14,7 +14,9 @@ public class ItemEffect : MonoBehaviour
         GoldAmount,
         GoldMultiplier,
         AttackCooldown,
-        Lifesteal
+        Lifesteal,
+        CritChance
+
     }
 
     public EffectType effectType;
@@ -89,7 +91,10 @@ public class ItemEffect : MonoBehaviour
                 GameManagerScript.instance.hasLifesteal = true;
                 break;
 
-            
+            case EffectType.CritChance:
+                GameManagerScript.instance.critChance += amount;
+                break;
+
 
 
         }

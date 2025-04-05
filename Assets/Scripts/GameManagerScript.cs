@@ -9,6 +9,8 @@ public class GameManagerScript : MonoBehaviour
     public byte level = 1;
 
     public float MaxStamina;
+    public float critChance = 0.1f;
+    public float critMultiplier = 0.2f;
     public float Stamina;
     public float MaxHealth;
     public float Health;
