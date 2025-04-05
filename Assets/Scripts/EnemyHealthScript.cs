@@ -26,13 +26,16 @@ public class EnemyHealthScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.CompareTag("Hitbox"))
     {
-        if (other.CompareTag("Hitbox"))
-        {
-            TakeDamage(10);
-        }
+        TakeDamage(10);
+
     }
+}
+
+
 
     void TakeDamage(int damage)
     {
@@ -46,7 +49,7 @@ public class EnemyHealthScript : MonoBehaviour
 
         if (cameraShake != null)
         {
-            cameraShake.ShakeCamera(5f, 0.1f); // Singleton yok, referans ile çağır
+            cameraShake.ShakeCamera(2f, 0.1f); // Singleton yok, referans ile çağır
         }
 
         if (currentHealth <= 0)

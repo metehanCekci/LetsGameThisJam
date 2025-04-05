@@ -29,7 +29,7 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.AttackPower: return 3f;
             case ItemEffect.EffectType.WalkSpeed: return 2f;
             case ItemEffect.EffectType.RunSpeed: return 3f;
-            case ItemEffect.EffectType.AttackRange: return 2f;
+            case ItemEffect.EffectType.AttackRange: return 0.5f;
             case ItemEffect.EffectType.GoldMultiplier: return 0.25f;
             case ItemEffect.EffectType.AttackCooldown: return -0.1f;
             default: return 1f;
