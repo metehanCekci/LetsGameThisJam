@@ -4,7 +4,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript instance;
 
-    public byte level = 0;
+    public byte level = 1;
 
     public int MaxStamina;
     public int MaxHealth;

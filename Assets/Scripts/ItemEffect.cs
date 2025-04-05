@@ -20,7 +20,7 @@ public class ItemEffect : MonoBehaviour
     public int amount;
     public int itemCost;
 
-    public GameObject grayOverlay; // ✅ Unity'den manuel atanacak
+    public GameObject grayOverlay;
 
     private Button button;
     private bool isPurchased = false;
