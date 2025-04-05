@@ -92,6 +92,12 @@ public class EnemyHealthScript : MonoBehaviour
 
     public void TakeDamageFromPlayer(int damage, Transform attacker)
     {
-        TakeDamage(damage);
+        float missingHealthRatio = 1f - (GameManagerScript.instance.Health / GameManagerScript.instance.MaxHealth);
+        float bonusDamage = GameManagerScript.instance.missingHealthDamageBonus * missingHealthRatio * damage;
+
+        int totalDamage = Mathf.RoundToInt(damage + bonusDamage);
+        TakeDamage(totalDamage);
     }
+
+
 }
