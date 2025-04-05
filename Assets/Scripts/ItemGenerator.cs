@@ -17,7 +17,7 @@ public class ItemGenerator : MonoBehaviour
         itemEffect.itemCost = cost;
 
         if (costText != null)
-            costText.text = $"{cost}G";
+            costText.text = $"{cost} Altın";
     }
 
     float GetFixedStatValue(ItemEffect.EffectType type)
