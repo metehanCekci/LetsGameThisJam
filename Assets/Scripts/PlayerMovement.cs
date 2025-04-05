@@ -32,21 +32,34 @@ public class PlayerMovement : MonoBehaviour
         animator = this.gameObject.GetComponent<Animator>();
     }
     private void Update(){
-        if (idle){
-            if (lookingLeft){
-                if (lookingUp){
-
-                }
-                else{
-
-                }
+        if (idle)
+        {
+            animator.SetBool("idle",true);
+            if (lookingLeft)
+            {
+                animator.SetBool("", true);
             }
-            else{
-                if (lookingUp){
+            else if (lookingUp)
+            {
+                animator.SetBool("LookingUp", true);
+            }
+            else
+            {
+                
+            }
+        }
+        
+        else
+        {
+            if (lookingLeft)
+            {
+                if (lookingUp)
+                {
 
                 }
-                else {
-                    
+                else
+                {
+
                 }
             }
         }
