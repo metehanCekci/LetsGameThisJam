@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 163504109250100158}
   - component: {fileID: 416607385982441309}
-  - component: {fileID: 8158494855021521034}
   - component: {fileID: 1320722288588336004}
+  - component: {fileID: 6762378689484506945}
   m_Layer: 0
   m_Name: HealthOrb
   m_TagString: Untagged
@@ -89,19 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8158494855021521034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7062492235934781696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ec4368494763a4aa1d348d5c3bae74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healAmount: 5
 --- !u!70 &1320722288588336004
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,3 +126,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!114 &6762378689484506945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062492235934781696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5808431b3c561264dbdc9a2509c4f1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 5

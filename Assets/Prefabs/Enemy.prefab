@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7909570710786191473}
   - component: {fileID: 8451534123536977230}
   - component: {fileID: -7985085711629997457}
-  - component: {fileID: 5290198449482794155}
+  - component: {fileID: 8309560472024087308}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Hurtbox
@@ -171,7 +171,7 @@ MonoBehaviour:
   maxHealth: 12
   flashDuration: 0.1
   healthOrbPrefab: {fileID: 7062492235934781696, guid: 6ca11c4703dfaac45b7018d9ccdf196a, type: 3}
---- !u!114 &5290198449482794155
+--- !u!114 &8309560472024087308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9068911619565435055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2fb30d79ea0e04194cc136eb37cc27, type: 3}
+  m_Script: {fileID: 11500000, guid: dcfade3d447ec7745bccd541ed5981e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
