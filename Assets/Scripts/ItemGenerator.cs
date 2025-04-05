@@ -9,8 +9,8 @@ public class ItemGenerator : MonoBehaviour
 
     public void GenerateItemWithEffect(ItemEffect.EffectType fixedEffect)
     {
-        int value = Random.Range(10, 31);
-        int cost = CalculateCost(fixedEffect, value);
+        float value = GetFixedStatValue(fixedEffect);      
+        float cost = GetFixedGoldCost(fixedEffect);        
 
         itemEffect.effectType = fixedEffect;
         itemEffect.amount = value;
@@ -20,23 +20,35 @@ public class ItemGenerator : MonoBehaviour
             costText.text = $"{cost}G";
     }
 
-    int CalculateCost(ItemEffect.EffectType type, int value)
+    float GetFixedStatValue(ItemEffect.EffectType type)
     {
-        float multiplier = 1f;
-
         switch (type)
         {
-            case ItemEffect.EffectType.Health: multiplier = 7f; break;
-            case ItemEffect.EffectType.Stamina: multiplier = 5f; break;
-            case ItemEffect.EffectType.AttackPower: multiplier = 10f; break;
-            case ItemEffect.EffectType.WalkSpeed: multiplier = 15f; break;
-            case ItemEffect.EffectType.RunSpeed: multiplier = 15f; break;
-            case ItemEffect.EffectType.AttackRange: multiplier = 12f; break;
-            case ItemEffect.EffectType.GoldAmount: multiplier = 1f; break;
-            case ItemEffect.EffectType.GoldMultiplier: multiplier = 20f; break;
-            case ItemEffect.EffectType.AttackCooldown: multiplier = 4f; break;
+            case ItemEffect.EffectType.MaxHealth: return 20f;
+            case ItemEffect.EffectType.Stamina: return 20f;
+            case ItemEffect.EffectType.AttackPower: return 3f;
+            case ItemEffect.EffectType.WalkSpeed: return 2f;
+            case ItemEffect.EffectType.RunSpeed: return 3f;
+            case ItemEffect.EffectType.AttackRange: return 2f;
+            case ItemEffect.EffectType.GoldMultiplier: return 0.25f;
+            case ItemEffect.EffectType.AttackCooldown: return -0.1f;
+            default: return 1f;
         }
+    }
 
-        return Mathf.RoundToInt(value * multiplier);
+    float GetFixedGoldCost(ItemEffect.EffectType type)
+    {
+        switch (type)
+        {
+            case ItemEffect.EffectType.MaxHealth: return 40f;
+            case ItemEffect.EffectType.Stamina: return 30f;
+            case ItemEffect.EffectType.AttackPower: return 70f;
+            case ItemEffect.EffectType.WalkSpeed: return 25f;
+            case ItemEffect.EffectType.RunSpeed: return 30f;
+            case ItemEffect.EffectType.AttackRange: return 35f;
+            case ItemEffect.EffectType.GoldMultiplier: return 100f;
+            case ItemEffect.EffectType.AttackCooldown: return 80f;
+            default: return 100f;
+        }
     }
 }

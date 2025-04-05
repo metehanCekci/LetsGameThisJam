@@ -6,14 +6,14 @@ public class GameManagerScript : MonoBehaviour
 
     public byte level = 1;
 
-    public int MaxStamina;
-    public int MaxHealth;
-    public int Health;
-    public int AttackPower;
-    public int GoldAmount;
+    public float MaxStamina;
+    public float MaxHealth;
+    public float Health;
+    public float AttackPower;
+    public float GoldAmount;
 
-    public int WalkSpeed;
-    public int RunSpeed;
+    public float WalkSpeed;
+    public float RunSpeed;
     public float AttackCooldown; 
     public float goldMultiplier;
     public float AttackRange;

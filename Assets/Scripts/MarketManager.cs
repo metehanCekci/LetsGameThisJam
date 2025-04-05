@@ -4,12 +4,17 @@ using System.Collections.Generic;
 public class MarketManager : MonoBehaviour
 {
     public List<ItemGenerator> itemGenerators;
-
+    public GameObject gameManager;
     void Start()
     {
+        if (GameManagerScript.instance == null)
+        {
+            Instantiate(gameManager);
+        }
+
         List<ItemEffect.EffectType> effects = new List<ItemEffect.EffectType>
         {
-            ItemEffect.EffectType.Health,
+            ItemEffect.EffectType.MaxHealth,
             ItemEffect.EffectType.Stamina,
             ItemEffect.EffectType.AttackPower,
             ItemEffect.EffectType.WalkSpeed,
