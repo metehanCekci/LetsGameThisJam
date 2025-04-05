@@ -28,11 +28,10 @@ public class SplashScreenFade : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         StartCoroutine(FadeOut());
-<<<<<<< Updated upstream
+
         yield return new WaitForSeconds(0.5f);
-=======
-        yield return new WaitForSeconds(1f);
->>>>>>> Stashed changes
+
+      
         menuMusic.Play();
         // Kalan süre kadar bekle, sonra menü müziðini baþlat
         yield return new WaitForSeconds(fadeStartBeforeEnd);
