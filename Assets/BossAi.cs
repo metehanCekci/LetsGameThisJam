@@ -5,6 +5,8 @@ public class BossAi : MonoBehaviour
 {
     GameObject LeftHand;
     GameObject RightHand;
+
+    GameObject ProjectilesParent;
     Transform LeftRestPos;
     Transform RightRestPos;
     Transform LeftAttackPos;
@@ -22,6 +24,8 @@ public class BossAi : MonoBehaviour
     {
         LeftHand = transform.GetChild(4).gameObject;
         RightHand = transform.GetChild(2).gameObject;
+
+        ProjectilesParent = transform.GetChild(7).gameObject;
 
         LeftRestPos = transform.GetChild(3);
         RightRestPos = transform.GetChild(1);
@@ -45,10 +49,15 @@ public class BossAi : MonoBehaviour
             {
                 yield return StartCoroutine(Impale());
             }
+            else
+            {
+                yield return StartCoroutine(Horde());
+            }
 
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
     }
+
 
     IEnumerator Impale()
     {
@@ -71,37 +80,53 @@ public class BossAi : MonoBehaviour
         yield return StartCoroutine(MoveToPosition(hand.transform, restPos.position));
     }
 
-IEnumerator ShootBulletsFrom(Transform attackPos)
-{
-    GameObject bulletPrefab = attackPos.GetChild(0).gameObject;
-
-    float angleStep = bulletSpreadAngle / (bulletCount - 1);
-    float startAngle = -bulletSpreadAngle / 2f;
-
-    bool isLeft = (attackPos == LeftAttackPos);
-
-    for (int i = 0; i < bulletCount; i++)
+    IEnumerator Horde()
     {
-        float angleOffset = startAngle + angleStep * i;
-        float finalAngle = isLeft ? angleOffset : -angleOffset;
+        int iterations = 6;
+        float spawnInterval = 0.2f;
+        int projectileCount = ProjectilesParent.transform.childCount;
 
-        // Add the spread angle to the bullet's original rotation
-        Quaternion addedRotation = Quaternion.Euler(0, 0, finalAngle);
-        Quaternion finalRotation = bulletPrefab.transform.rotation * addedRotation;
-
-        GameObject bullet = Instantiate(bulletPrefab, attackPos.position, finalRotation);
-        bullet.SetActive(true);
-
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        for (int i = 0; i < iterations; i++)
         {
-            Vector2 direction = finalRotation * Vector2.right;
-            rb.linearVelocity = direction.normalized * bulletSpeed;
+            int randIndex = Random.Range(0, projectileCount);
+            GameObject clone = Instantiate(ProjectilesParent.transform.GetChild(randIndex).gameObject);
+            clone.SetActive(true);
+            yield return new WaitForSeconds(spawnInterval);
         }
-
-        yield return new WaitForSeconds(0.1f);
     }
-}
+
+
+    IEnumerator ShootBulletsFrom(Transform attackPos)
+    {
+        GameObject bulletPrefab = attackPos.GetChild(0).gameObject;
+
+        float angleStep = bulletSpreadAngle / (bulletCount - 1);
+        float startAngle = -bulletSpreadAngle / 2f;
+
+        bool isLeft = (attackPos == LeftAttackPos);
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float angleOffset = startAngle + angleStep * i;
+            float finalAngle = isLeft ? angleOffset : -angleOffset;
+
+            // Add the spread angle to the bullet's original rotation
+            Quaternion addedRotation = Quaternion.Euler(0, 0, finalAngle);
+            Quaternion finalRotation = bulletPrefab.transform.rotation * addedRotation;
+
+            GameObject bullet = Instantiate(bulletPrefab, attackPos.position, finalRotation);
+            bullet.SetActive(true);
+
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 direction = finalRotation * Vector2.right;
+                rb.linearVelocity = direction.normalized * bulletSpeed;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
 
 

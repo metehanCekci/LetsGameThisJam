@@ -5,7 +5,7 @@ public class ItemEffect : MonoBehaviour
 {
     public enum EffectType
     {
-        Health,
+        MaxHealth,
         Stamina,
         AttackPower,
         WalkSpeed,
@@ -17,8 +17,8 @@ public class ItemEffect : MonoBehaviour
     }
 
     public EffectType effectType;
-    public int amount;
-    public int itemCost;
+    public float amount;
+    public float itemCost;
 
     public GameObject grayOverlay;
 
@@ -74,13 +74,12 @@ public class ItemEffect : MonoBehaviour
 
         switch (effectType)
         {
-            case EffectType.Health: GameManagerScript.instance.Health += amount; break;
+            case EffectType.MaxHealth: GameManagerScript.instance.Health += amount; break;
             case EffectType.Stamina: GameManagerScript.instance.MaxStamina += amount; break;
             case EffectType.AttackPower: GameManagerScript.instance.AttackPower += amount; break;
             case EffectType.WalkSpeed: GameManagerScript.instance.WalkSpeed += amount; break;
             case EffectType.RunSpeed: GameManagerScript.instance.RunSpeed += amount; break;
             case EffectType.AttackRange: GameManagerScript.instance.AttackRange += amount; break;
-            case EffectType.GoldAmount: GameManagerScript.instance.GoldAmount += amount; break;
             case EffectType.GoldMultiplier: GameManagerScript.instance.goldMultiplier += amount; break;
             case EffectType.AttackCooldown: GameManagerScript.instance.AttackCooldown -= amount; break;
         }

@@ -62,7 +62,7 @@ MonoBehaviour:
   MaxHealth: 100
   Health: 100
   AttackPower: 10
-  GoldAmount: 0
+  GoldAmount: 500
   WalkSpeed: 3
   RunSpeed: 5
   AttackCooldown: 0.5

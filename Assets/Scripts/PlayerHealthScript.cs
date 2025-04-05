@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+
 
     public float iFrameDuration = 1f;
     private bool isInvincible = false;
@@ -17,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
 
@@ -31,10 +30,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvincible) return;
 
-        currentHealth -= damage;
-        Debug.Log($"Player took {damage} damage. Health: {currentHealth}");
+        GameManagerScript.instance.Health -= damage;
+        Debug.Log($"Player took {damage} damage. Health: {GameManagerScript.instance.Health}");
 
-        if (currentHealth <= 0)
+        if (GameManagerScript.instance.Health <= 0)
         {
             Die();
         }
