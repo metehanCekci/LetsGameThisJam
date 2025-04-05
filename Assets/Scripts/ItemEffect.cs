@@ -83,7 +83,14 @@ public class ItemEffect : MonoBehaviour
             case EffectType.AttackRange: GameManagerScript.instance.AttackRange += amount; break;
             case EffectType.GoldMultiplier: GameManagerScript.instance.goldMultiplier += amount; break;
             case EffectType.AttackCooldown: GameManagerScript.instance.AttackCooldown -= amount; break;
-            case EffectType.Lifesteal: GameManagerScript.instance.Lifesteal += amount; break;
+
+            case EffectType.Lifesteal:
+                GameManagerScript.instance.Lifesteal += amount;
+                GameManagerScript.instance.hasLifesteal = true;
+                break;
+
+            
+
 
         }
 

@@ -26556,6 +26556,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 6.33
       objectReference: {fileID: 0}
+    - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
+      propertyPath: maxEnemies
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
