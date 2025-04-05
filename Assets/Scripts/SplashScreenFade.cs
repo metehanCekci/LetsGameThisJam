@@ -9,7 +9,7 @@ public class SplashScreenFade : MonoBehaviour
     public AudioSource splashSound;
     public AudioSource menuMusic;
     public float fadeDuration = 1.0f;
-    public float fadeStartBeforeEnd = 1.0f; // Fade'in müzik bitiþinden kaç saniye önce baþlayacaðý
+    public float fadeStartBeforeEnd = 1f; // Fade'in müzik bitiþinden kaç saniye önce baþlayacaðý
 
     void Awake()
     {
@@ -28,7 +28,7 @@ public class SplashScreenFade : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         StartCoroutine(FadeOut());
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         menuMusic.Play();
         // Kalan süre kadar bekle, sonra menü müziðini baþlat
         yield return new WaitForSeconds(fadeStartBeforeEnd);

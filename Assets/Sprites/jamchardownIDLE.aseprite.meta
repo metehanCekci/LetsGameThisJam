@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: jamchardownIDLE
     originalName: 
-    pivot: {x: 0.5277778, y: -0.033613447}
+    pivot: {x: 0.5277778, y: -0.03305785}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -134,8 +134,16 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 36
-      height: 119
+      height: 121
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+    spriteID: af3c8d93ff33d98498f1f7f0b3c7afef
+=======
     spriteID: 01b92ddda00fe7745bc6940aec0d64e3
+>>>>>>> 17456526b984173ebaf9683c13c0012c744621f5
+=======
+    spriteID: a940a25e2459eb6439d61abecdcb477b
+>>>>>>> Stashed changes
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,90 +152,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5277778, y: -0.033613447}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 48
-      y: 4
-      width: 36
-      height: 119
-    spriteID: 70d7790d94b792f43929995bb5c6427e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 48, y: 4}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.5277778, y: -0.033613447}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 92
-      y: 4
-      width: 36
-      height: 119
-    spriteID: f45f3fab8882d674d97cb2e88fb7b392
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 92, y: 4}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.5277778, y: -0.033898305}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 180
-      y: 4
-      width: 36
-      height: 118
-    spriteID: 84f6985db2eb33d4a88ff67f0a1298f9
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 180, y: 4}
-  - name: Frame_4
-    originalName: 
-    pivot: {x: 0.5277778, y: -0.033613447}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 136
-      y: 4
-      width: 36
-      height: 119
-    spriteID: 7eab033033912674585ae86a764fe4d2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 136, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -237,51 +161,23 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: jamchardownIDLE
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 45
         y: 4
         width: 36
-        height: 119
+        height: 121
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+      spriteId: af3c8d93ff33d98498f1f7f0b3c7afef
+=======
       spriteId: 01b92ddda00fe7745bc6940aec0d64e3
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 45
-        y: 4
-        width: 36
-        height: 119
-      spriteId: 70d7790d94b792f43929995bb5c6427e
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 45
-        y: 4
-        width: 36
-        height: 119
-      spriteId: f45f3fab8882d674d97cb2e88fb7b392
-    - name: Frame_3
-      frameIndex: 3
-      additiveSortOrder: 0
-      cellRect:
-        x: 45
-        y: 4
-        width: 36
-        height: 118
-      spriteId: 84f6985db2eb33d4a88ff67f0a1298f9
-    - name: Frame_4
-      frameIndex: 4
-      additiveSortOrder: 0
-      cellRect:
-        x: 45
-        y: 4
-        width: 36
-        height: 119
-      spriteId: 7eab033033912674585ae86a764fe4d2
+>>>>>>> 17456526b984173ebaf9683c13c0012c744621f5
+=======
+      spriteId: a940a25e2459eb6439d61abecdcb477b
+>>>>>>> Stashed changes
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -301,4 +197,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 128, y: 128}
-  previousTextureSize: {x: 256, y: 128}
+  previousTextureSize: {x: 128, y: 256}

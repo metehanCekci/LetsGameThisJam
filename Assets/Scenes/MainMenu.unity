@@ -145,7 +145,7 @@ AudioSource:
   m_GameObject: {fileID: 22885310}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2286181133011361614, guid: 94999e96fb420a740ae4862dcdd9edde, type: 2}
   m_audioClip: {fileID: 8300000, guid: de404ecb856ba6b409de77dda2dd9b94, type: 3}
   m_Resource: {fileID: 8300000, guid: de404ecb856ba6b409de77dda2dd9b94, type: 3}
   m_PlayOnAwake: 0
@@ -990,7 +990,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1797927180}
   - component: {fileID: 1797927179}
-  - component: {fileID: 1797927181}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -1007,7 +1006,7 @@ AudioSource:
   m_GameObject: {fileID: 1797927178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2286181133011361614, guid: 94999e96fb420a740ae4862dcdd9edde, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0b0cd505dac4d714f88e84a3cfadf3d6, type: 3}
   m_Resource: {fileID: 8300000, guid: 0b0cd505dac4d714f88e84a3cfadf3d6, type: 3}
   m_PlayOnAwake: 0
@@ -1110,18 +1109,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1797927181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797927178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56660e80489946b45af9163616830c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1886858602
 GameObject:
   m_ObjectHideFlags: 0
