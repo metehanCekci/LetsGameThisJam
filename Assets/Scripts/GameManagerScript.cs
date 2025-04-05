@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -15,10 +17,11 @@ public class GameManagerScript : MonoBehaviour
 
     public float WalkSpeed;
     public float RunSpeed;
-    public float AttackCooldown; 
+    public float AttackCooldown;
     public float goldMultiplier;
     public float AttackRange;
 
+    
 
     private void Awake()
     {
@@ -32,4 +35,11 @@ public class GameManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+       
+    }
+
+    
 }
