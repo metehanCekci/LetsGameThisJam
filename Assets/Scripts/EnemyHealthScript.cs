@@ -10,6 +10,7 @@ public class EnemyHealthScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float flashDuration = 0.1f;
+    public GameObject healthOrbPrefab;
 
     private CameraShake cameraShake;
 
@@ -66,6 +67,16 @@ public class EnemyHealthScript : MonoBehaviour
     void Die()
     {
         OnDeath?.Invoke();
+
+        if (healthOrbPrefab != null)
+        {
+            Instantiate(healthOrbPrefab, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
+
+
+
+
 }
