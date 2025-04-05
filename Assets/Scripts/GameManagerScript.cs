@@ -22,7 +22,12 @@ public class GameManagerScript : MonoBehaviour
     public float goldMultiplier;
     public float AttackRange;
 
-    
+    public bool hasLifesteal = false;
+    public bool hasElectricSword = false;
+
+
+
+
 
     private void Awake()
     {

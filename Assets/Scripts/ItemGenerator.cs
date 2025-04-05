@@ -20,12 +20,11 @@ public class ItemGenerator : MonoBehaviour
 
         if (costText != null)
             costText.text = $"{cost} Altın";
-
         if (newFeatureImage != null)
-        {
-            bool isNewUpgrade = fixedEffect == ItemEffect.EffectType.Lifesteal || fixedEffect == ItemEffect.EffectType.GoldMultiplier;
-            newFeatureImage.SetActive(isNewUpgrade);
-        }
+{
+    bool isNewUpgrade = fixedEffect == ItemEffect.EffectType.Lifesteal;
+    newFeatureImage.SetActive(isNewUpgrade);
+}
 
     }
 

@@ -60,8 +60,8 @@ MonoBehaviour:
   level: 0
   MaxStamina: 100
   Stamina: 0
-  MaxHealth: 100
-  Health: 100
+  MaxHealth: 500
+  Health: 500
   AttackPower: 10
   GoldAmount: 500
   Lifesteal: 0
@@ -70,3 +70,5 @@ MonoBehaviour:
   AttackCooldown: 0.5
   goldMultiplier: 1
   AttackRange: 1
+  hasLifesteal: 0
+  hasElectricSword: 1
