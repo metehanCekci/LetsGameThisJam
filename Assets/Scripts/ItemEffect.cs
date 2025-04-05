@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemEffect : MonoBehaviour
@@ -18,11 +18,12 @@ public class ItemEffect : MonoBehaviour
 
     public EffectType effectType;
     public int amount;
-    public int itemCost; 
+    public int itemCost;
 
     private Button button;
     private Image buttonImage;
     private Color originalColor;
+    private bool isPurchased = false;
 
     void Start()
     {
@@ -35,7 +36,8 @@ public class ItemEffect : MonoBehaviour
 
     void Update()
     {
-        UpdateButtonInteractable();
+        if (!isPurchased)
+            UpdateButtonInteractable();
     }
 
     void UpdateButtonInteractable()
@@ -43,14 +45,26 @@ public class ItemEffect : MonoBehaviour
         if (GameManagerScript.instance == null) return;
 
         bool canAfford = GameManagerScript.instance.GoldAmount >= itemCost;
+
+        if (isPurchased)
+        {
+            
+            button.interactable = false;
+            buttonImage.color = new Color(originalColor.r * 0.5f, originalColor.g * 0.5f, originalColor.b * 0.5f, originalColor.a);
+            return;
+        }
+
+        
         button.interactable = canAfford;
         buttonImage.color = canAfford ? originalColor : new Color(originalColor.r * 0.5f, originalColor.g * 0.5f, originalColor.b * 0.5f, originalColor.a);
     }
+
 
     public void ApplyEffect()
     {
         if (GameManagerScript.instance == null) return;
         if (GameManagerScript.instance.GoldAmount < itemCost) return;
+        if (isPurchased) return;
 
         GameManagerScript.instance.GoldAmount -= itemCost;
 
@@ -85,14 +99,16 @@ public class ItemEffect : MonoBehaviour
                 break;
         }
 
-        
-        Button btn = GetComponentInChildren<Button>();
-        if (btn != null)
+        isPurchased = true;
+        button.interactable = false;
+
+   
+        Transform overlay = transform.Find("Image");
+        if (overlay != null)
         {
-            btn.interactable = false;
+            overlay.gameObject.SetActive(true);
         }
 
-        Debug.Log($"{effectType} etkisi uygulandý, {itemCost} altýn harcandý.");
+        Debug.Log($"{effectType} etkisi uygulandÄ±, {itemCost} altÄ±n harcandÄ±.");
     }
-
 }
