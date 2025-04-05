@@ -1,8 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,22 +13,21 @@ public class PlayerMovement : MonoBehaviour
     public bool currentDirXorY;
     private SpriteRenderer spriteRenderer;
 
-
     private Vector2 lastMoveDirection = Vector2.right;
     private bool canSlash = true;
     private Vector2 moveInput;
     private bool isSprinting = false;
-
-    private float currentStamina;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        if(GameManagerScript.instance == null)
-        Instantiate(GameManager);
+        if (GameManagerScript.instance == null)
+            Instantiate(GameManager);
         currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
-        currentStamina = GameManagerScript.instance.MaxStamina;
+        GameManagerScript.instance.Stamina = GameManagerScript.instance.MaxStamina;
         animator = this.gameObject.GetComponent<Animator>();
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        rb = this.gameObject.GetComponent<Rigidbody2D>();  // Reference to Rigidbody2D
     }
 
     void FixedUpdate()
@@ -40,23 +37,29 @@ public class PlayerMovement : MonoBehaviour
             lastMoveDirection = moveInput.normalized;
         }
 
-        if (isSprinting && currentStamina > 0)
+        if (isSprinting && GameManagerScript.instance.Stamina > 0)
         {
-            currentStamina -= 25f * Time.fixedDeltaTime; // Using fixed drain rate for now
-            if (currentStamina <= 0)
+            GameManagerScript.instance.Stamina -= 25f * Time.fixedDeltaTime; // Using fixed drain rate for now
+            if (GameManagerScript.instance.Stamina <= 0)
             {
-                currentStamina = 0;
+                GameManagerScript.instance.Stamina = 0;
                 StopSprinting();
             }
         }
-        else if (!isSprinting && currentStamina < GameManagerScript.instance.MaxStamina)
+        else if (!isSprinting && GameManagerScript.instance.Stamina < GameManagerScript.instance.MaxStamina)
         {
-            currentStamina += 15f * Time.fixedDeltaTime; // Using fixed regen rate for now
-            if (currentStamina > GameManagerScript.instance.MaxStamina)
-                currentStamina = GameManagerScript.instance.MaxStamina;
+            GameManagerScript.instance.Stamina += 15f * Time.fixedDeltaTime; // Using fixed regen rate for now
+            if (GameManagerScript.instance.Stamina > GameManagerScript.instance.MaxStamina)
+                GameManagerScript.instance.Stamina = GameManagerScript.instance.MaxStamina;
         }
 
-        transform.Translate(moveInput.normalized * currentMoveSpeed * Time.deltaTime);
+        MovePlayer(); // Use Rigidbody2D for movement
+    }
+
+    void MovePlayer()
+    {
+        // Update the velocity of the Rigidbody2D directly for movement
+        rb.linearVelocity = new Vector2(moveInput.x * currentMoveSpeed, moveInput.y * currentMoveSpeed);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -76,11 +79,9 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 animator.SetBool("CurrentDirXorY", false);
-
             }
 
             return;
-            
         }
 
         if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
@@ -129,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed && canSlash)
@@ -140,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed && currentStamina > 0)
+        if (context.performed && GameManagerScript.instance.Stamina > 0)
         {
             StartSprinting();
         }
@@ -180,5 +180,4 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown);
         canSlash = true;
     }
-    
 }
