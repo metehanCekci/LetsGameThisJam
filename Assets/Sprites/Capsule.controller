@@ -150,9 +150,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: lookingDown
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}
   m_Solo: 0
@@ -539,9 +536,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}
   m_Solo: 0
@@ -718,6 +712,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: lookingDown
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7291586842485011527}
   m_Solo: 0
@@ -875,7 +872,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.5
   m_HasExitTime: 0
@@ -955,7 +952,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.46428573
   m_HasExitTime: 0
@@ -1025,6 +1022,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: lookingDown
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7291586842485011527}
@@ -1200,9 +1200,6 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}
@@ -1498,6 +1495,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Attacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: lookingDown
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4350936629037465688}
@@ -2304,8 +2304,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
+  - m_ConditionMode: 2
+    m_ConditionEvent: lookingDown
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}
@@ -2449,9 +2449,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}
   m_Solo: 0
@@ -2562,10 +2559,10 @@ AnimatorStateMachine:
     m_Position: {x: 870, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8552368336700216215}
-    m_Position: {x: 870, y: 310, z: 0}
+    m_Position: {x: 250, y: 720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7291586842485011527}
-    m_Position: {x: 30, y: 310, z: 0}
+    m_Position: {x: -140, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2784563823871068596}
     m_Position: {x: 470, y: 310, z: 0}
@@ -2876,9 +2873,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}
   m_Solo: 0
@@ -2939,25 +2933,16 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: goingUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: goingDown
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: goingLeft
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: goingRight
+  - m_ConditionMode: 2
+    m_ConditionEvent: goingUp
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: lookingDown
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: CurrentDirXorY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8552368336700216215}

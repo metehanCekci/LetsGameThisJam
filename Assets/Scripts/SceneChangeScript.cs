@@ -116,7 +116,7 @@ public class SceneChangeScript : MonoBehaviour
     }
     public void loadLevel1()
     {
-        //Destroy(AudioManager.instance.gameObject);
+        Destroy(AudioManager.instance.gameObject);
         StartCoroutine(FadeInAndLoadScene(2));
     }
     public void loadLevel2()
