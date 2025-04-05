@@ -1,20 +1,28 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
-    public Canvas pauseMenu;
+    public GameObject Player;
+    public GameObject pauseMenu;
     public bool active = false;
     public bool settingsActive = false;
     void Start()
     {
-        pauseMenu.enabled = false;
+        
+        pauseMenu.SetActive(false);
         pauseMenu.transform.Find("MenuBackground").gameObject.SetActive(true);
         pauseMenu.transform.Find("SettingsBackground").gameObject.SetActive(false);
+        Player.GetComponent<PlayerInput>().enabled = true;
     }
 
     void Update()
     {
+        if (Player==null)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (active)
@@ -23,19 +31,23 @@ public class PauseScript : MonoBehaviour
                 {
                     pauseMenu.transform.Find("MenuBackground").gameObject.SetActive(true);
                     pauseMenu.transform.Find("SettingsBackground").gameObject.SetActive(false);
-                    
+                    settingsActive = false;
                 }
                 else
                 {
-                    pauseMenu.enabled = false;
+                    active = false;
+                    pauseMenu.SetActive(false);
                     Time.timeScale = 1.0f;
+                    Player.GetComponent<PlayerInput>().enabled = true;
+                    
                 }
             }
             else
             {
                 active = true;
                 Time.timeScale = 0f;
-                pauseMenu.enabled = true;
+                pauseMenu.SetActive(true);
+                Player.GetComponent<PlayerInput>().enabled = false;
             }
             
         }
@@ -48,11 +60,18 @@ public class PauseScript : MonoBehaviour
     }
     public void QuitButton()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
     public void SettingsBackButton()
     {
         pauseMenu.transform.Find("MenuBackground").gameObject.SetActive(true);
         pauseMenu.transform.Find("SettingsBackground").gameObject.SetActive(false);
+    }
+    public void ResumeButton()
+    {
+        active = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1.0f;
+        Player.GetComponent<PlayerInput>().enabled = true;
     }
 }
