@@ -1624,10 +1624,10 @@ AnimatorStateMachine:
     m_Position: {x: 200, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4350936629037465688}
-    m_Position: {x: 390, y: 60, z: 0}
+    m_Position: {x: 550, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1582142632700559636}
-    m_Position: {x: 440, y: -140, z: 0}
+    m_Position: {x: 450, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7595991034315829826}
     m_Position: {x: 530, y: -250, z: 0}
@@ -1655,7 +1655,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: jamcharwalkrightATACK_Clip
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4181870100577524410}
@@ -1673,7 +1673,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7046360768485408765, guid: 5ba6e7859aaf1e34f99bdcba7a30b0dd, type: 3}
+  m_Motion: {fileID: 7400000, guid: aaf575502da44d349bc27c4baa9f723a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

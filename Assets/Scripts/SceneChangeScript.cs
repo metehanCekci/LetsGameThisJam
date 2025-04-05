@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 
 public class SceneChangeScript : MonoBehaviour
 {
     public SplashScreenFade SplashScreenFade;
-
-
+    public Image image;
+    public float fadeDuration = 1f;
 
     public void Start()
     {
@@ -13,6 +15,24 @@ public class SceneChangeScript : MonoBehaviour
     }
     public void StartGame()
     {
+        
+        StartCoroutine(FadeIn());
+    }
+    IEnumerator FadeIn()
+    {
+        Color color = image.color;
+        color.a = 0f;
+        image.color = color;
+
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsed / fadeDuration);
+            image.color = color;
+            
+            yield return null;
+        }
         SceneManager.LoadScene(8);
     }
     public void NextScene()
