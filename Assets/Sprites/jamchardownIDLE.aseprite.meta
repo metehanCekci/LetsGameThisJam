@@ -134,8 +134,13 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 36
+<<<<<<< Updated upstream
       height: 119
     spriteID: d49d261fb50e3134b8f16f4270190a5c
+=======
+      height: 121
+    spriteID: a940a25e2459eb6439d61abecdcb477b
+>>>>>>> Stashed changes
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -244,6 +249,7 @@ ScriptedImporter:
         x: 45
         y: 4
         width: 36
+<<<<<<< Updated upstream
         height: 119
       spriteId: d49d261fb50e3134b8f16f4270190a5c
     - name: Frame_1
@@ -282,6 +288,10 @@ ScriptedImporter:
         width: 36
         height: 119
       spriteId: 798f3bf0598133a40b0c603ddb8e85b9
+=======
+        height: 121
+      spriteId: a940a25e2459eb6439d61abecdcb477b
+>>>>>>> Stashed changes
     linkedCells: []
     parentIndex: -1
   platformSettings:

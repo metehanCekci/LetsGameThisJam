@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("goingDown", false);
                 currentDirXorY = true; //true X false Y
                 spriteRenderer.flipX = false;
+                animator.SetBool("lookingDown", false);
             }
             else//left
             {
@@ -102,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("goingDown", false);
                 currentDirXorY = true;
                 spriteRenderer.flipX = true;
+                animator.SetBool("lookingDown", false);
             }
         }
         else
@@ -109,18 +111,20 @@ public class PlayerMovement : MonoBehaviour
             if (moveInput.y > 0)//up
             {
                 animator.SetBool("goingUp", true);
-                animator.SetBool("goingDown", true);
+                animator.SetBool("goingDown", false);
                 animator.SetBool("goingRight", false);
                 animator.SetBool("goingLeft", false);
                 currentDirXorY = false;
+                animator.SetBool("lookingDown", false);
             }
             else//down
             {
-                animator.SetBool("goingUp", true);
+                animator.SetBool("goingUp", false);
                 animator.SetBool("goingDown", true);
                 animator.SetBool("goingRight", false);
                 animator.SetBool("goingLeft", false);
                 currentDirXorY = false;
+                animator.SetBool("lookingDown", true);
             }
         }
     }
