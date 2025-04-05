@@ -15,7 +15,11 @@ public class ItemEffect : MonoBehaviour
         GoldMultiplier,
         AttackCooldown,
         Lifesteal,
-        CritChance
+        CritChance,
+        DodgeChance,
+        MissingHealthDamage
+
+
 
     }
 
@@ -95,6 +99,13 @@ public class ItemEffect : MonoBehaviour
                 GameManagerScript.instance.critChance += amount;
                 break;
 
+            case EffectType.DodgeChance:
+                GameManagerScript.instance.dodgeChance += amount;
+                break;
+
+            case EffectType.MissingHealthDamage:
+                GameManagerScript.instance.missingHealthDamageBonus += amount;
+                break;
 
 
         }

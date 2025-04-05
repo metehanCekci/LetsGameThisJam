@@ -30,6 +30,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvincible) return;
 
+        // Kaçýnma kontrolü
+        if (Random.value < GameManagerScript.instance.dodgeChance)
+        {
+            Debug.Log("Kaçýnýldý!");
+            return;
+        }
+
         GameManagerScript.instance.Health -= damage;
         
 
@@ -42,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(InvincibilityFrames());
         }
     }
+
 
     IEnumerator InvincibilityFrames()
     {

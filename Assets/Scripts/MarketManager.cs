@@ -25,7 +25,8 @@ public class MarketManager : MonoBehaviour
             ItemEffect.EffectType.AttackRange,
             ItemEffect.EffectType.GoldMultiplier,
             ItemEffect.EffectType.AttackCooldown,
-            ItemEffect.EffectType.Lifesteal
+            ItemEffect.EffectType.Lifesteal,
+            ItemEffect.EffectType.DodgeChance
         }
         ;
         ShuffleList(effects);
@@ -96,7 +97,9 @@ public class MarketManager : MonoBehaviour
         ItemEffect.EffectType.AttackRange,
         ItemEffect.EffectType.GoldMultiplier,
         ItemEffect.EffectType.AttackCooldown,
-        ItemEffect.EffectType.Lifesteal
+        ItemEffect.EffectType.Lifesteal,
+        ItemEffect.EffectType.MissingHealthDamage
+
     };
 
         ShuffleList(effects);
@@ -108,10 +111,10 @@ public class MarketManager : MonoBehaviour
             var effect = generator.GetComponent<ItemEffect>();
             if (effect != null)
             {
-                effect.ResetItem(); // önce içeriði sýfýrla
+                effect.ResetItem(); 
             }
 
-            generator.gameObject.SetActive(false); // sonra görünmez yap
+            generator.gameObject.SetActive(false); 
         }
 
         foreach (var effect in effects)
@@ -120,7 +123,7 @@ public class MarketManager : MonoBehaviour
             if (!CanEffectBeShown(effect)) continue;
 
             var generator = itemGenerators[generatorIndex];
-            generator.gameObject.SetActive(true); // sadece kullanýlacaklarý göster
+            generator.gameObject.SetActive(true); 
             generator.GenerateItemWithEffect(effect);
             generatorIndex++;
         }

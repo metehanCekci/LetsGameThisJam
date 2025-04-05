@@ -42,6 +42,9 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.AttackCooldown: return -0.1f;
             case ItemEffect.EffectType.Lifesteal: return 1f;
             case ItemEffect.EffectType.CritChance: return 0.1f;
+            case ItemEffect.EffectType.DodgeChance: return 0.05f;
+            case ItemEffect.EffectType.MissingHealthDamage: return 0.5f;
+
             default: return 1f;
         }
     }
@@ -60,6 +63,10 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.AttackCooldown: return 80f;
             case ItemEffect.EffectType.Lifesteal: return 100f;
             case ItemEffect.EffectType.CritChance: return 60f;
+            case ItemEffect.EffectType.DodgeChance: return 80f;
+            case ItemEffect.EffectType.MissingHealthDamage: return 90f;
+
+
 
             default: return 100f;
         }
