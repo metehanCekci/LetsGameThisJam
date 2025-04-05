@@ -126,7 +126,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0, y: 0.12959349}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!50 &8451534123536977230
@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &-7985085711629997457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfade3d447ec7745bccd541ed5981e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  followRange: 10
+  moveSpeed: 1.5
+  followRange: 999
   attackRange: 5
   shootDelay: 1
   burstCount: 3

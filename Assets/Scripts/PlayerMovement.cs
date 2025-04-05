@@ -64,7 +64,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        
         moveInput = context.ReadValue<Vector2>();
+
+        if (animator.GetBool("Attacking"))
+        return;
 
         if (moveInput.sqrMagnitude < 0.01f)
         {
@@ -167,21 +171,31 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PerformSlash()
     {
-        
         canSlash = false;
         yield return new WaitForSeconds(0.2f);
-        Vector3 offset = (Vector3)(lastMoveDirection.normalized * GameManagerScript.instance.AttackRange);
-        Vector3 spawnPosition = firePoint.position + offset;
-        
+
+        Vector3 spawnOffset = Vector3.zero;
+
+        if (lastMoveDirection.x > 0.5f) // Sağ
+            spawnOffset = Vector3.right * GameManagerScript.instance.AttackRange;
+        else if (lastMoveDirection.x < -0.5f) // Sol
+            spawnOffset = Vector3.left * GameManagerScript.instance.AttackRange;
+        else if (lastMoveDirection.y > 0.6f) // Yukarı
+            spawnOffset = Vector3.up * GameManagerScript.instance.AttackRange;
+        else if (lastMoveDirection.y < -0.6f) // Aşağı
+            spawnOffset = Vector3.down * GameManagerScript.instance.AttackRange;
+
+        Vector3 spawnPosition = firePoint.position + spawnOffset;
+
         GameObject slash = Instantiate(Slash, spawnPosition, Quaternion.identity);
         slash.transform.parent = Slash.transform.parent;
         slash.SetActive(true);
 
         Destroy(slash, slashLifetime);
 
-        
         yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown);
         canSlash = true;
         animator.SetBool("Attacking", false);
     }
+
 }

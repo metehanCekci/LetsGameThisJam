@@ -44,8 +44,10 @@ public class ItemTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             case ItemEffect.EffectType.AttackRange: return "Saldýrý Menzili + ";
             case ItemEffect.EffectType.GoldAmount: return "Altýn +";
             case ItemEffect.EffectType.GoldMultiplier: return "Altýn Çarpaný + ";
-            case ItemEffect.EffectType.AttackCooldown: return "Saldýrý Bekleme Süresi  ";
+            case ItemEffect.EffectType.AttackCooldown: return "Saldýrý Bekleme Süresi ";
+            case ItemEffect.EffectType.Lifesteal: return "Can Çalma + ";
             default: return type.ToString();
         }
     }
+
 }
