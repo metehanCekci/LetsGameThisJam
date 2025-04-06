@@ -89,7 +89,17 @@ public class BossAi : MonoBehaviour
         Transform attackPos = isLeft ? LeftAttackPos : RightAttackPos;
         Transform restPos = isLeft ? LeftRestPos : RightRestPos;
 
-        //hand.GetComponent<SpriteRenderer>().sprite = pointHand;
+        
+
+        if(isLeft)
+        {
+            hand.GetComponent<SpriteRenderer>().sprite = pointHand;
+        }
+        else
+        {
+            hand.GetComponent<SpriteRenderer>().sprite = pointHand;
+            hand.GetComponent<SpriteRenderer>().flipX = true;
+        }
         // Move hand to attack position
         yield return StartCoroutine(MoveToPosition(hand.transform, attackPos.position));
 
@@ -101,7 +111,7 @@ public class BossAi : MonoBehaviour
 
         // Change sprite based on which hand performed the attack
         hand.GetComponent<SpriteRenderer>().sprite = isLeft ? Hand : Hand2;
-
+        hand.GetComponent<SpriteRenderer>().flipX = false;
         // Wait at attack position
         yield return new WaitForSeconds(attackPauseDuration);
 
@@ -141,47 +151,54 @@ public class BossAi : MonoBehaviour
     }
 
 
-    IEnumerator Swipe()
+IEnumerator Swipe()
+{
+    bool isLeft = Random.Range(0, 2) == 0;
+    bool isUp = Random.Range(0, 2) == 0;
+
+    GameObject hand = isLeft ? LeftHand : RightHand;
+    Transform startPos = null;
+    Transform endPos = null;
+
+    // Set the hand sprite to SwipeHand or SwipeHand2 based on which hand is used
+    hand.GetComponent<SpriteRenderer>().sprite = isLeft ? SwipeHand : SwipeHand2;
+
+    if (isLeft && isUp)
     {
-        bool isLeft = Random.Range(0, 2) == 0;
-        bool isUp = Random.Range(0, 2) == 0;
-
-        GameObject hand = isLeft ? LeftHand : RightHand;
-        Transform startPos = null;
-        Transform endPos = null;
-
-        if (isLeft && isUp)
-        {
-            startPos = HandSwipeLUP;
-            endPos = HandSwipeRUP;
-        }
-        else if (isLeft && !isUp)
-        {
-            startPos = HandSwipeLDOWN;
-            endPos = HandSwipeRDOWN;
-        }
-        else if (!isLeft && isUp)
-        {
-            startPos = HandSwipeRUP;
-            endPos = HandSwipeLUP;
-        }
-        else
-        {
-            startPos = HandSwipeRDOWN;
-            endPos = HandSwipeLDOWN;
-        }
-
-        Transform restPos = isLeft ? LeftRestPos : RightRestPos;
-
-        // === Step 1: Move hand slowly to starting swipe position
-        yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, startPos.position, attackMoveSpeed * 1.5f));
-
-        hand.GetComponent<CircleCollider2D>().enabled = true;
-        yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, endPos.position, attackMoveSpeed * 5f));
-        hand.GetComponent<CircleCollider2D>().enabled = false;
-        // === Step 3: Fast return to rest position
-        yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, restPos.position, attackMoveSpeed * 3f));
+        startPos = HandSwipeLUP;
+        endPos = HandSwipeRUP;
     }
+    else if (isLeft && !isUp)
+    {
+        startPos = HandSwipeLDOWN;
+        endPos = HandSwipeRDOWN;
+    }
+    else if (!isLeft && isUp)
+    {
+        startPos = HandSwipeRUP;
+        endPos = HandSwipeLUP;
+    }
+    else
+    {
+        startPos = HandSwipeRDOWN;
+        endPos = HandSwipeLDOWN;
+    }
+
+    Transform restPos = isLeft ? LeftRestPos : RightRestPos;
+
+    // === Step 1: Move hand slowly to starting swipe position
+    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, startPos.position, attackMoveSpeed * 1.5f));
+
+    hand.GetComponent<CircleCollider2D>().enabled = true;
+    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, endPos.position, attackMoveSpeed * 5f));
+    hand.GetComponent<CircleCollider2D>().enabled = false;
+
+    // === Step 3: Fast return to rest position
+    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, restPos.position, attackMoveSpeed * 3f));
+
+    // After swipe, return the sprite to the normal hand sprite
+    hand.GetComponent<SpriteRenderer>().sprite = isLeft ? Hand : Hand2;
+}
 
     // New coroutine to move with different speed
     IEnumerator MoveToPositionWithSpeed(Transform hand, Vector3 target, float moveSpeed)
