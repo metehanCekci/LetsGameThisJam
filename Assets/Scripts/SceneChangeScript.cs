@@ -21,20 +21,23 @@ public class SceneChangeScript : MonoBehaviour
     {
         
         pauseScript = FindFirstObjectByType<PauseScript>();
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex>=1)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex >= 1)
         {
             StartCoroutine(FadeOut());
         }
-        if (FadeInAnim==null)
+        else
         {
-            FadeInAnim = GameObject.Find("UI").transform.Find("FadeIn").GetComponent<Image>();
+            if (FadeInAnim==null)
+            {
+                FadeInAnim = GameObject.Find("UI").transform.Find("FadeIn").GetComponent<Image>();
+            }
+            if (FadeOutAnim == null)
+            {
+                FadeOutAnim = GameObject.Find("UI").transform.Find("FadeOut").GetComponent<Image>();
+            }
+                FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
+                FadeOutAnim.gameObject.SetActive(false);
         }
-        if (FadeOutAnim == null)
-        {
-            FadeOutAnim = GameObject.Find("UI").transform.Find("FadeOut").GetComponent<Image>();
-        }
-        FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
-        FadeOutAnim.gameObject.SetActive(false);
     }
     public void StartGame()
     {

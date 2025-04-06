@@ -17881,7 +17881,7 @@ PrefabInstance:
       objectReference: {fileID: 1942652853}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: totalEnemiesToSpawn
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18080,6 +18080,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1576824436
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 140124690125177394, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163237277322110102, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_Size.y
+      value: 15.940062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163237277322110102, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.3923941
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476584126349809803, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_Name
+      value: Duvarlar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3819883376664133587, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6903977
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3977027
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.033152655
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635566333460383666, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804487870931394367, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309072412408107539, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.18111038
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309072412408107539, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_Size.y
+      value: 15.983261
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309072412408107539, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.4173374
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9452a58868c64c74b9fa2dc66555faf8, type: 3}
 --- !u!1 &1880908950
 GameObject:
   m_ObjectHideFlags: 0
@@ -18298,3 +18387,4 @@ SceneRoots:
   - {fileID: 1514730466}
   - {fileID: 1942652852}
   - {fileID: 1880908952}
+  - {fileID: 1576824436}

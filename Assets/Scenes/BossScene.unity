@@ -20273,7 +20273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
-  isBoss: 0
+  isBoss: 1
   flashDuration: 0.1
   healthOrbPrefab: {fileID: 0}
 --- !u!50 &2117590635

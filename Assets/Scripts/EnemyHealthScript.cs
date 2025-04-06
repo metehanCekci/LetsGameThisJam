@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyHealthScript : MonoBehaviour
 {
+    private SceneChangeScript SceneChangeScript;
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -17,6 +18,7 @@ public class EnemyHealthScript : MonoBehaviour
 
     void Start()
     {
+        SceneChangeScript = GetComponent<SceneChangeScript>();
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraShake = FindAnyObjectByType<CameraShake>();
@@ -91,7 +93,7 @@ public class EnemyHealthScript : MonoBehaviour
             Instantiate(healthOrbPrefab, transform.position, Quaternion.identity);
         }
 
-        if(isBoss)SceneManager.LoadScene("End");
+        if(isBoss)SceneChangeScript.NextScene();
 
         Destroy(gameObject);
     }
