@@ -93,7 +93,7 @@ public class EnemyHealthScript : MonoBehaviour
             Instantiate(healthOrbPrefab, transform.position, Quaternion.identity);
         }
 
-        if(isBoss)SceneChangeScript.NextScene();
+        if(isBoss)SceneChangeScript.FadeInAndLoadScene(10);
 
         Destroy(gameObject);
     }
