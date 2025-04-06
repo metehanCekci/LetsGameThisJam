@@ -37,6 +37,10 @@ public class SceneChangeScript : MonoBehaviour
     {
         StartCoroutine(FadeInAndLoadScene(8));
     }
+    public void ToMarket()
+    {
+        StartCoroutine(FadeInAndLoadScene(9));
+    }
     public IEnumerator FadeIn()
     {
         if (FadeInAnim == null)

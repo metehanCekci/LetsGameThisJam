@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1612,10 +1612,6 @@ PrefabInstance:
     - target: {fileID: 705465393343737178, guid: 9376f5b7ed036b04292592360995cd13, type: 3}
       propertyPath: m_Name
       value: "Fade\u0130n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 705465393343737178, guid: 9376f5b7ed036b04292592360995cd13, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9215945296412632038, guid: 9376f5b7ed036b04292592360995cd13, type: 3}
       propertyPath: m_Pivot.x
