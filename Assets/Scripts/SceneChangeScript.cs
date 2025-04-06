@@ -162,4 +162,8 @@ public class SceneChangeScript : MonoBehaviour
         yield return FadeIn(); // önce fade in bitsin
         SceneManager.LoadScene(sceneIndex); // sonra sahne geçsin
     }
+    public void ReLoad()
+    {
+        SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
 }
