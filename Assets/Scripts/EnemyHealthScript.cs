@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealthScript : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+
+    public bool isBoss = false;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -38,7 +41,7 @@ public class EnemyHealthScript : MonoBehaviour
         if (Random.value < GameManagerScript.instance.critChance)
         {
             damage = Mathf.RoundToInt(damage * GameManagerScript.instance.critMultiplier);
-            Debug.Log("Kritik vuruþ! Yeni Hasar: " + damage);
+            Debug.Log("Kritik vuruï¿½! Yeni Hasar: " + damage);
         }
 
         currentHealth -= damage;
@@ -54,7 +57,7 @@ public class EnemyHealthScript : MonoBehaviour
             cameraShake.ShakeCamera(2f, 0.1f);
         }
 
-        // Can çalma
+        // Can ï¿½alma
         if (GameManagerScript.instance.Lifesteal > 0)
         {
             GameManagerScript.instance.Health += GameManagerScript.instance.Lifesteal;
@@ -86,6 +89,8 @@ public class EnemyHealthScript : MonoBehaviour
         {
             Instantiate(healthOrbPrefab, transform.position, Quaternion.identity);
         }
+
+        if(isBoss)SceneManager.LoadScene("End");
 
         Destroy(gameObject);
     }
