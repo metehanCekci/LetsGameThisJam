@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 888299401304212089}
   - component: {fileID: 8452072500855962711}
   - component: {fileID: 3628320726958276064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iFrameDuration: 1
+  isInvincible: 0
   enemyLayerName: Enemy
 --- !u!95 &3628320726958276064
 Animator:

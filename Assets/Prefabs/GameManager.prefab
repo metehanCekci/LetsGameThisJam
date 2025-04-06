@@ -61,11 +61,13 @@ MonoBehaviour:
   MaxStamina: 100
   critChance: 0.1
   critMultiplier: 0.2
+  dodgeChance: 0.15
+  missingHealthDamageBonus: 0
   Stamina: 0
-  MaxHealth: 500
-  Health: 500
+  MaxHealth: 100
+  Health: 100
   AttackPower: 10
-  GoldAmount: 500
+  GoldAmount: 20
   Lifesteal: 0
   WalkSpeed: 3
   RunSpeed: 5

@@ -187,9 +187,9 @@ MonoBehaviour:
   moveSpeed: 1.5
   followRange: 999
   attackRange: 5
-  shootDelay: 1
+  shootDelay: 2
   burstCount: 3
-  timeBetweenShots: 0.1
+  timeBetweenShots: 0.2
   bulletPrefab: {fileID: 2460070185247086032}
 --- !u!1001 &5113923537185569802
 PrefabInstance:
@@ -200,8 +200,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 8317713488334586938}
     m_Modifications:
     - target: {fileID: 1379211218744326338, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379211218744326338, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1379211218744326338, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
       propertyPath: m_LocalPosition.x

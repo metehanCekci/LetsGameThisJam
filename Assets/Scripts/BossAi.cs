@@ -98,8 +98,8 @@ public class BossAi : MonoBehaviour
 
     IEnumerator Horde()
     {
-        int iterations = 6;
-        float spawnInterval = 0.2f;
+        int iterations = 4;
+        float spawnInterval = 0.3f;
         int projectileCount = ProjectilesParent.transform.childCount;
 
         // Create a list of indices to randomly pick from
