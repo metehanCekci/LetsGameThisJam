@@ -94,7 +94,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.5
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -153,7 +153,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.375
   m_HasExitTime: 0
@@ -2270,7 +2270,7 @@ AnimatorStateMachine:
     m_Position: {x: -1290, y: -200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5075503692873144540}
-    m_Position: {x: -250, y: 380, z: 0}
+    m_Position: {x: -10, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4350936629037465688}
     m_Position: {x: -190, y: 50, z: 0}
@@ -2285,7 +2285,7 @@ AnimatorStateMachine:
     m_Position: {x: -1080, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8552368336700216215}
-    m_Position: {x: -1170, y: 30, z: 0}
+    m_Position: {x: -1770, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7291586842485011527}
     m_Position: {x: -630, y: 60, z: 0}
@@ -2465,7 +2465,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: jamcharwalkrightATACK_Clip
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4181870100577524410}
