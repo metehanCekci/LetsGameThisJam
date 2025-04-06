@@ -692,7 +692,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.93, y: 5.14, z: 0.062423367}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 576681671}
@@ -741,8 +741,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.6249809, a: 1}
+  m_Sprite: {fileID: 654269329933657914, guid: f4cee4a02810b2343937c297c0a6ef7b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -786,8 +786,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.07856643}
+  m_Radius: 1.3467711
 --- !u!50 &446668906
 Rigidbody2D:
   serializedVersion: 5
@@ -952,10 +952,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959270619adecff4980ebd9181bda67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMoveSpeed: 7
-  attackPauseDuration: 1
+  attackMoveSpeed: 5
+  attackPauseDuration: 2
   timeBetweenAttacks: 0
-  bulletCount: 16
+  bulletCount: 12
   bulletSpreadAngle: 180
   bulletSpeed: 12
 --- !u!50 &576681673
@@ -4541,6 +4541,18 @@ PrefabInstance:
       value: Capsule
       objectReference: {fileID: 0}
     - target: {fileID: 4698801701679254398, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698801701679254398, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698801701679254398, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698801701679254398, guid: d54122b65503b00409569279a041b0f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.24
       objectReference: {fileID: 0}
@@ -4992,7 +5004,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.42, y: 5.17, z: 0.062423367}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 576681671}
@@ -5041,8 +5053,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.564044, a: 1}
+  m_Sprite: {fileID: -1418187534721785526, guid: f4cee4a02810b2343937c297c0a6ef7b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5086,8 +5098,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.1309439}
+  m_Radius: 1.2070976
 --- !u!50 &2088432254
 Rigidbody2D:
   serializedVersion: 5
@@ -5257,6 +5269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+  isBoss: 0
   flashDuration: 0.1
   healthOrbPrefab: {fileID: 0}
 --- !u!50 &2117590635
