@@ -17250,6 +17250,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
+      propertyPath: sceneChangeScript
+      value: 
+      objectReference: {fileID: 1265583926}
+    - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: totalEnemiesToSpawn
       value: 24
       objectReference: {fileID: 0}
@@ -17466,6 +17470,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5a34e4068e41b24b8e33429892a272e, type: 3}
+--- !u!114 &1265583926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4258503418356306717, guid: a5a34e4068e41b24b8e33429892a272e, type: 3}
+  m_PrefabInstance: {fileID: 1265583925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee7799e41c84774886c086f4808b8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1314416967
 GameObject:
   m_ObjectHideFlags: 0
