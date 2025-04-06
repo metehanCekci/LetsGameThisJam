@@ -54,6 +54,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         MovePlayer(); // Use Rigidbody2D for movement
+        if (true)
+        {
+
+        }
+        else if (true)
+        {
+
+        }
     }
 
     void MovePlayer()
@@ -128,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("goingLeft", false);
                 currentDirXorY = false;
                 animator.SetBool("lookingDown", true);
+                
             }
         }
     }
@@ -169,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PerformSlash()
     {
+        Debug.Log("Slash başladı. iFrame aktif mi: " + FindObjectOfType<PlayerHealth>().isInvincible);
         canSlash = false;
         
 

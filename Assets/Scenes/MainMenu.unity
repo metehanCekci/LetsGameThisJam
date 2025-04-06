@@ -448,6 +448,7 @@ MonoBehaviour:
   splashScreenImage: {fileID: 1411360955}
   splashSound: {fileID: 22885311}
   menuMusic: {fileID: 1797927179}
+  fadeDuration: 1.5
 --- !u!4 &697933974
 Transform:
   m_ObjectHideFlags: 0
@@ -1371,10 +1372,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 638444441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -282.5, y: 0}
-  m_SizeDelta: {x: 600, y: 300}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 400, y: 0}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933456149
 MonoBehaviour:
