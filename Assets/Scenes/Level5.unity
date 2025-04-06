@@ -25469,7 +25469,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 5
   orthographic: 1
   orthographic size: 5
   m_Depth: -1
@@ -25661,6 +25661,18 @@ PrefabInstance:
     - target: {fileID: 5685057253060387938, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
+      propertyPath: maxEnemies
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
+      propertyPath: spawnInterval
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
+      propertyPath: totalEnemiesToSpawn
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
