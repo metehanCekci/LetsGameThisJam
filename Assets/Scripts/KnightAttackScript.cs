@@ -8,6 +8,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     public int damage = 10;
     public float attackCooldown = 1f;
     public float attackDuration = 0.8f; // ← animasyon süresi
+    public float postAttackDelay = 0.5f;
 
     private Transform player;
     private float lastAttackTime;
@@ -20,6 +21,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     [HideInInspector]
     public bool isAttacking = false;
+    private bool isWaitingAfterAttack = false;
 
     void Start()
     {
@@ -34,11 +36,20 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player == null || isAttacking) return;
+        if (player == null) return;
+
+        // SALDIRI veya SALDIRI SONRASI BEKLEME VARSA → durmalı
+        if (isAttacking || isWaitingAfterAttack)
+        {
+            animator.SetBool("Walking", false);
+            animator.SetBool("Attacking", isAttacking);
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
 
         Vector2 directionToPlayer = player.position - transform.position;
-        float xDistance = Mathf.Abs(transform.position.x - player.position.x);
-        float yDistance = Mathf.Abs(transform.position.y - player.position.y);
+        float xDistance = Mathf.Abs(directionToPlayer.x);
+        float yDistance = Mathf.Abs(directionToPlayer.y);
 
         bool inAttackRange = xDistance <= attackRange && yDistance <= yTolerance;
         bool tooCloseToPlayer = xDistance <= stopDistance;
@@ -50,8 +61,8 @@ public class EnemyMeleeAttack : MonoBehaviour
                 StartCoroutine(AttackRoutine());
             }
 
-            animator.SetBool("Attacking", true);
             animator.SetBool("Walking", false);
+            animator.SetBool("Attacking", true);
             rb.linearVelocity = Vector2.zero;
         }
         else
@@ -61,10 +72,7 @@ public class EnemyMeleeAttack : MonoBehaviour
             if (!tooCloseToPlayer)
             {
                 animator.SetBool("Walking", true);
-
-                // Hareket sadece X yönünde olacaksa şu satırı kullan:
                 Vector2 direction = new Vector2(Mathf.Sign(directionToPlayer.x), 0);
-
                 rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
             }
             else
@@ -76,13 +84,13 @@ public class EnemyMeleeAttack : MonoBehaviour
     }
 
 
+
+
     IEnumerator AttackRoutine()
     {
         isAttacking = true;
         lastAttackTime = Time.time;
 
-        // Biraz bekle → hasarın animasyonla senkron olması için (örnek: 0.3 saniye sonra vurur)
-        yield return new WaitForSeconds(0.3f);
 
         // Hâlâ hedef varsa ve hâlâ saldırıyorsa vur
         if (player != null && isAttacking)
@@ -92,15 +100,22 @@ public class EnemyMeleeAttack : MonoBehaviour
 
             if (xDistance <= attackRange && yDistance <= yTolerance)
             {
+
                 PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
+                    animator.SetBool("Walking", false);
+                    animator.SetBool("Attacking", true);
                     playerHealth.TakeDamage(damage);
+
                 }
             }
+
         }
-        // Saldırı tamamlanınca
-        yield return new WaitForSeconds(attackDuration - 0.3f); // animasyonun kalan süresi
+        animator.SetBool("Attacking", false);
         isAttacking = false;
+        yield return new WaitForSeconds(attackDuration); // animasyonun kalan süresi
+        
+        
     }
 }
