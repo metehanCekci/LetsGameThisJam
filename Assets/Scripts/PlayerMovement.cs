@@ -169,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PerformSlash()
     {
+        Debug.Log("Slash başladı. iFrame aktif mi: " + FindObjectOfType<PlayerHealth>().isInvincible);
         canSlash = false;
         
 
