@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && canSlash)
         {
             SetFacingDirection(lastMoveDirection);
+            SFXScript.Instance.PlaySlash();
             animator.SetBool("Attacking", true);
             StartCoroutine(PerformSlash());
         }

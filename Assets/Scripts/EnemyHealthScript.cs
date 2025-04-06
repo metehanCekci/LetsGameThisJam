@@ -31,6 +31,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         if (other.CompareTag("Hitbox"))
         {
+            SFXScript.Instance.PlayHit();
             TakeDamage(10);
         }
     }

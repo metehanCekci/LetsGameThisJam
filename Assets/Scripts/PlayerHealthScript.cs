@@ -41,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
         // Sonra iframe kontrol�
         if (isInvincible) return;
 
+        SFXScript.Instance.PlayHurt();
         GameManagerScript.instance.Health -= damage;
 
         Debug.Log($"Player took {damage} damage. Health: {GameManagerScript.instance.Health}");
