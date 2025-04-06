@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     public float iFrameDuration = 1f;
     public bool isInvincible = false;
+    
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -28,14 +29,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        // Önce kaçýnma kontrolü yap
+        // ï¿½nce kaï¿½ï¿½nma kontrolï¿½ yap
         if (Random.value < GameManagerScript.instance.dodgeChance)
         {
-            Debug.Log("Kaçýnýldý!");
+            Debug.Log("Kaï¿½ï¿½nï¿½ldï¿½!");
             return;
         }
 
-        // Sonra iframe kontrolü
+        // Sonra iframe kontrolï¿½
         if (isInvincible) return;
 
         GameManagerScript.instance.Health -= damage;
