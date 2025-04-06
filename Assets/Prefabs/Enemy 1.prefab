@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &-7985085711629997457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 12
-  currentHealth: 0
-  isBoss: 0
   flashDuration: 0.1
   healthOrbPrefab: {fileID: 7062492235934781696, guid: 6ca11c4703dfaac45b7018d9ccdf196a, type: 3}
 --- !u!114 &6833606274961737161
