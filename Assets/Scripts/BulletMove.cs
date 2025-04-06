@@ -2,16 +2,31 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    public float speed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float speed = 10f;
+    public float lifetime = 3f;
+    public int damage = 10;
+
     void Start()
     {
-        Destroy(this.gameObject,5);
+        Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        this.transform.position += this.transform.right * speed * Time.deltaTime;
+        transform.Translate(Vector3.right * speed * Time.deltaTime); 
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+
+            Destroy(gameObject); // mermi yok olsun
+        }
     }
 }
