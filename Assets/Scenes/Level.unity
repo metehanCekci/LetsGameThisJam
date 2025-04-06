@@ -25827,6 +25827,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 3984078360636446694, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984078360636446694, guid: d54122b65503b00409569279a041b0f3, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4698801701679254398, guid: d54122b65503b00409569279a041b0f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
