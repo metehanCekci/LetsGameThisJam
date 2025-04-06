@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement; // <-- Bunu ekle
 
 public class EnemySpawnerScript : MonoBehaviour
 {
+    public SceneChangeScript sceneChangeScript;
     [Header("Spawn Settings")]
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
@@ -16,6 +17,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
     void Start()
     {
+        sceneChangeScript = FindFirstObjectByType<SceneChangeScript>();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -69,7 +71,7 @@ public class EnemySpawnerScript : MonoBehaviour
 void LoadNextScene()
 {
     GameManagerScript.instance.level++;
-    SceneManager.LoadScene("RandomShop");
+        sceneChangeScript.StartGame();
 }
 
 }

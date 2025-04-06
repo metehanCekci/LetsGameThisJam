@@ -11,8 +11,14 @@ public class SceneChangeScript : MonoBehaviour
     public Image FadeOutAnim;
     public float fadeDuration = 1f;
 
+    public void Awake()
+    {
+        FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
+        FadeOutAnim.gameObject.SetActive(false);
+    }
     public void Start()
     {
+        
         pauseScript = FindFirstObjectByType<PauseScript>();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex>=1)
         {
@@ -29,8 +35,6 @@ public class SceneChangeScript : MonoBehaviour
     }
     public void StartGame()
     {
-        
-        StartCoroutine(FadeIn());
         StartCoroutine(FadeInAndLoadScene(8));
     }
     public IEnumerator FadeIn()
@@ -56,14 +60,15 @@ public class SceneChangeScript : MonoBehaviour
             }
             color.a = 1f;
             FadeInAnim.color = color;
-            yield return new WaitForSeconds(1f);
-            FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
+            
         }
         
         
     }
     IEnumerator FadeOut()
     {
+        FadeOutAnim.gameObject.SetActive(true);
+        Debug.Log("selam");
         if (FadeOutAnim == null)
         {
             yield return null;
@@ -148,10 +153,9 @@ public class SceneChangeScript : MonoBehaviour
     
     public IEnumerator FadeInAndLoadScene(int sceneIndex)
     {
+        FadeInAnim.gameObject.SetActive(true);
         Time.timeScale = 1f;
         yield return FadeIn(); // önce fade in bitsin
         SceneManager.LoadScene(sceneIndex); // sonra sahne geçsin
-        yield return new WaitForSeconds(1f);
-        FadeInAnim.gameObject.SetActive(false);
     }
 }
