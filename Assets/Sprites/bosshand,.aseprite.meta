@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 218e9ead08079b0499a365cdafbf75ef
+guid: f4cee4a02810b2343937c297c0a6ef7b
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638795133285439465
+  platformSettingsDirtyTick: 638795116260951428
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,9 +123,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: healtstamina
+  - name: bosshand,
     originalName: 
-    pivot: {x: 0.49999997, y: -0.09090909}
+    pivot: {x: 0.5, y: -0.12469734}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 96
-      height: 22
-    spriteID: 8a6a37a388b402a4d8c3f485f1640813
+      width: 730
+      height: 826
+    spriteID: 50bce9d7d8852ef4695ab556633dfa35
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -145,7 +145,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: healtstamina_0
+  - name: bosshand,_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -154,10 +154,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 18
-      width: 96
-      height: 8
-    spriteID: 2842156205508ff4cb7bb02869edbe3d
+      y: 480
+      width: 230
+      height: 350
+    spriteID: 3dc2f82bfab8e55438cb9e9691dc3720
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -166,7 +166,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: healtstamina_1
+  - name: bosshand,_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -174,11 +174,53 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
+      x: 504
+      y: 480
+      width: 230
+      height: 350
+    spriteID: c9b4ffa000e8490488ab61a015630f7c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: bosshand,_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 9
+      width: 244
+      height: 348
+    spriteID: 352339a22408c0d4fb1e7241eb767846
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: bosshand,_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 473
       y: 4
-      width: 96
-      height: 8
-    spriteID: e83ea75eb8241a44ea38ee2118506664
+      width: 245
+      height: 347
+    spriteID: e3bd2203eb6e9bb42bbdb873371de343
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -189,21 +231,21 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: 1927235389
-    name: healtstamina
+    guid: -1878422070
+    name: bosshand,
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: healtstamina
+    - name: bosshand,
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 2
-        width: 96
-        height: 22
-      spriteId: 8a6a37a388b402a4d8c3f485f1640813
+        x: 135
+        y: 103
+        width: 730
+        height: 826
+      spriteId: 50bce9d7d8852ef4695ab556633dfa35
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -246,5 +288,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 100, y: 30}
-  previousTextureSize: {x: 128, y: 32}
+  canvasSize: {x: 1000, y: 1000}
+  previousTextureSize: {x: 1024, y: 1024}
