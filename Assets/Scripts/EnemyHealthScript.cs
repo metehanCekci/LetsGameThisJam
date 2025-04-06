@@ -18,7 +18,7 @@ public class EnemyHealthScript : MonoBehaviour
 
     void Start()
     {
-        SceneChangeScript = GetComponent<SceneChangeScript>();
+        SceneChangeScript = FindFirstObjectByType<SceneChangeScript>();
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         cameraShake = FindAnyObjectByType<CameraShake>();
@@ -93,7 +93,7 @@ public class EnemyHealthScript : MonoBehaviour
             Instantiate(healthOrbPrefab, transform.position, Quaternion.identity);
         }
 
-        if(isBoss)SceneChangeScript.FadeInAndLoadScene(10);
+        if(isBoss) SceneManager.LoadScene(12);
 
         Destroy(gameObject);
     }
