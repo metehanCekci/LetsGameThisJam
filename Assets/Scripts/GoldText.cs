@@ -19,7 +19,7 @@ public class GoldText : MonoBehaviour
     {
         if (goldText != null)
         {
-            goldText.text = $"Altýn: {GameManagerScript.instance.GoldAmount}";
+            goldText.text = $"Altýn {GameManagerScript.instance.GoldAmount}";
 
         }
     }

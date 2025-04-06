@@ -8,25 +8,30 @@ public class ItemGenerator : MonoBehaviour
     public TextMeshProUGUI costText;
     public GameObject newFeatureImage;
 
+    public Image iconImage; // İkon gösterilecek Image objesi
+    public Sprite[] statIcons; // 12 ikonluk dizi (Inspector'da sırayla atanacak)
 
     public void GenerateItemWithEffect(ItemEffect.EffectType fixedEffect)
     {
-        float value = GetFixedStatValue(fixedEffect);      
-        float cost = GetFixedGoldCost(fixedEffect);        
-
-        itemEffect.effectType = fixedEffect;
-        itemEffect.amount = value;
-        itemEffect.itemCost = cost;
+        itemEffect.effectType = fixedEffect;  // önce tipi ver
+        itemEffect.amount = GetFixedStatValue(fixedEffect);
+        itemEffect.itemCost = GetFixedGoldCost(fixedEffect);
 
         if (costText != null)
-            costText.text = $"{cost} Altın";
-        if (newFeatureImage != null)
-{
-    bool isNewUpgrade = fixedEffect == ItemEffect.EffectType.Lifesteal;
-    newFeatureImage.SetActive(isNewUpgrade);
-}
+            costText.text = $"{itemEffect.itemCost}";
 
+        // Yeni gelen özellik etiketi sadece Lifesteal için gösteriliyor
+        if (newFeatureImage != null)
+            newFeatureImage.SetActive(fixedEffect == ItemEffect.EffectType.Lifesteal);
+
+        // 🔥 İKON DOĞRU TİPLE eşleştirilerek atanıyor
+        if (iconImage != null && statIcons != null && statIcons.Length > (int)fixedEffect)
+        {
+            iconImage.sprite = statIcons[(int)fixedEffect];
+            iconImage.gameObject.SetActive(true);
+        }
     }
+
 
     float GetFixedStatValue(ItemEffect.EffectType type)
     {
@@ -42,9 +47,8 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.AttackCooldown: return -0.1f;
             case ItemEffect.EffectType.Lifesteal: return 1f;
             case ItemEffect.EffectType.CritChance: return 0.1f;
-            case ItemEffect.EffectType.DodgeChance: return 0.05f;
+            case ItemEffect.EffectType.DodgeChance: return 0.1f;
             case ItemEffect.EffectType.MissingHealthDamage: return 0.5f;
-
             default: return 1f;
         }
     }
@@ -62,12 +66,9 @@ public class ItemGenerator : MonoBehaviour
             case ItemEffect.EffectType.GoldMultiplier: return 100f;
             case ItemEffect.EffectType.AttackCooldown: return 80f;
             case ItemEffect.EffectType.Lifesteal: return 100f;
-            case ItemEffect.EffectType.CritChance: return 60f;
-            case ItemEffect.EffectType.DodgeChance: return 80f;
-            case ItemEffect.EffectType.MissingHealthDamage: return 90f;
-
-
-
+            case ItemEffect.EffectType.CritChance: return 80f;
+            case ItemEffect.EffectType.DodgeChance: return 90f;
+            case ItemEffect.EffectType.MissingHealthDamage: return 120f;
             default: return 100f;
         }
     }
