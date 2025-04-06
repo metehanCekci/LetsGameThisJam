@@ -51,3 +51,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  gameManager: {fileID: 4963258262523780873, guid: 950135eea86eac142a62a46e834ed979, type: 3}

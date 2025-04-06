@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 259d3abf3f00c014c9f52bfbfea315c2
+guid: 765771af0c544ba488d01b93d358faa6
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,9 +123,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: CANONBALL
+  - name: OK
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.44827583, y: -1.1428572}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 20
-      height: 20
-    spriteID: 5bc867eeeb18d674583146162ce93f7c
+      width: 58
+      height: 7
+    spriteID: 57374f6285c166e46b8e1447a2fad181
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,21 +147,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1638428316
-    name: CANONBALL
+    guid: 2041362128
+    name: OK
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: CANONBALL
+    - name: OK
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 20
-        height: 20
-      spriteId: 5bc867eeeb18d674583146162ce93f7c
+        x: 24
+        y: 8
+        width: 58
+        height: 7
+      spriteId: 57374f6285c166e46b8e1447a2fad181
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -180,5 +180,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 20, y: 20}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 100, y: 20}
+  previousTextureSize: {x: 128, y: 16}

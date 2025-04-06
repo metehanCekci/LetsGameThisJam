@@ -5,23 +5,20 @@ public class ItemEffect : MonoBehaviour
 {
     public enum EffectType
     {
-        MaxHealth,
-        Stamina,
-        AttackPower,
-        WalkSpeed,
-        RunSpeed,
-        AttackRange,
-        GoldAmount,
-        GoldMultiplier,
-        AttackCooldown,
-        Lifesteal,
-        CritChance,
-        DodgeChance,
-        MissingHealthDamage
-
-
-
+        MaxHealth = 0,
+        Stamina = 1,
+        AttackPower = 2,
+        WalkSpeed = 3,
+        RunSpeed = 4,
+        AttackRange = 5,
+        GoldMultiplier = 6,
+        AttackCooldown = 7,
+        Lifesteal = 8,
+        CritChance = 9,
+        DodgeChance = 10,
+        MissingHealthDamage = 11
     }
+
 
     public EffectType effectType;
     public float amount;
