@@ -71,7 +71,7 @@ public class EnemySpawnerScript : MonoBehaviour
 void LoadNextScene()
 {
     GameManagerScript.instance.level++;
-        sceneChangeScript.StartGame();
+        sceneChangeScript.ToMarket();
 }
 
 }
