@@ -27,13 +27,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Level5.unity
     guid: 9a690389bffab614da4c815fed08f743
   - enabled: 1
-    path: Assets/Scenes/BossScene.unity
-    guid: 7c54a5451825254498c52b98494d29ba
+    path: Assets/Scenes/ComicBeforeBoss.unity
+    guid: 77a5148a9f1b5f94190b3323b43a1366
   - enabled: 1
     path: Assets/Scenes/LevelEnd.unity
     guid: be055134d7097cd4fbd2ccb37ce4c3ce
   - enabled: 1
     path: Assets/Scenes/RandomShop.unity
     guid: 919319150efb9234599e0069a29007ae
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 637a6f4b4fcef754ba9d409c27e62a6e
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: 7c54a5451825254498c52b98494d29ba
+  - enabled: 1
+    path: Assets/Scenes/ComicAfterBoss.unity
+    guid: b72a7152c5a70c94aaae9a319e042c18
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

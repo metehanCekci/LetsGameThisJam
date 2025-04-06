@@ -127,7 +127,7 @@ public class SceneChangeScript : MonoBehaviour
             Destroy(AudioManager.instance.gameObject);
         }
         //pauseScript.active = false;
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != 9)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != 9 && UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != 10)
         {
             pauseScript.pauseMenu.SetActive(false);
         }

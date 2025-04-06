@@ -17247,7 +17247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: spawnInterval
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: sceneChangeScript
@@ -17255,7 +17255,7 @@ PrefabInstance:
       objectReference: {fileID: 1265583926}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: totalEnemiesToSpawn
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: spawnPoints.Array.size
