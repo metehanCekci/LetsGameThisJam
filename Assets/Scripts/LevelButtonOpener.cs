@@ -64,5 +64,13 @@ public class LevelButtonOpener : MonoBehaviour
             buton5.transform.Find("Image").gameObject.SetActive(false);
             buton6.transform.Find("Image").gameObject.SetActive(false);
         }
+        if (GameManagerScript.instance.level >= 7)
+        {
+            buton2.transform.Find("Image").gameObject.SetActive(false);
+            buton3.transform.Find("Image").gameObject.SetActive(false);
+            buton4.transform.Find("Image").gameObject.SetActive(false);
+            buton5.transform.Find("Image").gameObject.SetActive(false);
+            buton6.transform.Find("Image").gameObject.SetActive(false);
+        }
     }
 }
