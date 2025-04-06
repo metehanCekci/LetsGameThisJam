@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1211580322}
+    - target: {fileID: 3242866325960383376, guid: bbd05e96e498b864e9230374ed04b45d, type: 3}
+      propertyPath: sceneChangeScript
+      value: 
+      objectReference: {fileID: 1884834245}
     - target: {fileID: 3418172692448739740, guid: bbd05e96e498b864e9230374ed04b45d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 675.4245
@@ -887,6 +891,10 @@ PrefabInstance:
       propertyPath: FadeOutAnim
       value: 
       objectReference: {fileID: 4025719299139577986}
+    - target: {fileID: 4258503418356306717, guid: a5a34e4068e41b24b8e33429892a272e, type: 3}
+      propertyPath: pauseScript
+      value: 
+      objectReference: {fileID: 498718812}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
