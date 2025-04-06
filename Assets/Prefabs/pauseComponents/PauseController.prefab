@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3418172692448739740}
   - component: {fileID: 3242866325960383376}
   - component: {fileID: 2424385631365251188}
+  - component: {fileID: 3645848386034486355}
   m_Layer: 0
   m_Name: PauseController
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90cf10ac7f884543a1f523cd31ec88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneChangeScript: {fileID: 0}
   Player: {fileID: 0}
   pauseMenu: {fileID: 0}
   active: 0
@@ -61,3 +63,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd98ab446214bc4f955d4833708ca51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3645848386034486355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767079562183708434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee7799e41c84774886c086f4808b8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseScript: {fileID: 0}
+  SplashScreenFade: {fileID: 0}
+  FadeInAnim: {fileID: 0}
+  FadeOutAnim: {fileID: 0}
+  fadeDuration: 1
