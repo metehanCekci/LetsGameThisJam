@@ -127,8 +127,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.04032147, y: 0.5882496}
-  m_Size: {x: 0.25405335, y: 1.0907232}
+  m_Offset: {x: -0.04032147, y: -0.27}
+  m_Size: {x: 0.25405335, y: 0.7}
   m_Direction: 0
 --- !u!50 &8451534123536977230
 Rigidbody2D:
@@ -275,6 +275,22 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4685422480345300257, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.44827583
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685422480345300257, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: -1.1428572
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685422480345300257, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685422480345300257, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 5754261638405225784, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
       propertyPath: speed
       value: 4
@@ -287,6 +303,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8217886382033530813, guid: 0f49f23ab0b016d45baa57c3c640e48b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6565475839263975961, guid: 765771af0c544ba488d01b93d358faa6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
