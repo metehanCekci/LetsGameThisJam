@@ -59,7 +59,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60
+    FieldOfView: 5
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -111,8 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   PivotOffset: {x: 0, y: 0, z: 0}
-  AmplitudeGain: 1
-  FrequencyGain: 1
+  AmplitudeGain: 0
+  FrequencyGain: 0
   m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &-757268395826089886
 MonoBehaviour:
@@ -126,5 +126,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fd7899147b2bd4d8f6f6eeddd2bd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmount: 0.2
-  shakeDuration: 0.5

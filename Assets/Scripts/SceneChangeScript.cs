@@ -56,6 +56,7 @@ public class SceneChangeScript : MonoBehaviour
             }
             color.a = 1f;
             FadeInAnim.color = color;
+            yield return new WaitForSeconds(1f);
             FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
         }
         
