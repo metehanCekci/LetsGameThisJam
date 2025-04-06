@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement; // <-- Bunu ekle
 public class EnemySpawnerScript : MonoBehaviour
 {
     public SceneChangeScript sceneChangeScript;
+
     [Header("Spawn Settings")]
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
