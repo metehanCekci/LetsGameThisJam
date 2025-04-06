@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    public GameObject UIStatusBars;
 
     public float iFrameDuration = 1f;
     public bool isInvincible = false;
-    
+    Transform DeathScreen;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -17,14 +18,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-
+        UIStatusBars = GameObject.FindGameObjectWithTag("UI");
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
-
+        DeathScreen = UIStatusBars.transform.Find("DeathBackground");
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
         }
+        DeathScreen.gameObject.SetActive(false);
     }
 
     public void TakeDamage(int damage)
@@ -78,7 +80,10 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player has died.");
-        Destroy(gameObject);
+        Time.timeScale = 0f;
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        gameObject.GetComponent<PlayerInput>().enabled = false;
+        DeathScreen.gameObject.SetActive(true);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

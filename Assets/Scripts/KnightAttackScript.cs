@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyMeleeAttack : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    public float attackRange = 2f;
+    
     public int damage = 10;
     public float attackCooldown = 1f;
     public float attackDuration = 0.8f; // ← animasyon süresi
@@ -12,6 +13,9 @@ public class EnemyMeleeAttack : MonoBehaviour
     private float lastAttackTime;
     private Rigidbody2D rb;
     private Animator animator;
+
+    public float stopDistance = 0.5f; // Oyuncuya bu kadar yaklaşınca artık daha fazla ilerlemesin
+    public float attackRange = 2f;
     public float yTolerance = 0.5f; // Y ekseni farkı toleransı
 
     [HideInInspector]
@@ -32,11 +36,14 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         if (player == null || isAttacking) return;
 
+        Vector2 directionToPlayer = player.position - transform.position;
         float xDistance = Mathf.Abs(transform.position.x - player.position.x);
         float yDistance = Mathf.Abs(transform.position.y - player.position.y);
 
-        // Hem X ekseni menzilde olmalı, hem de Y ekseni çok farklı olmamalı
-        if (xDistance <= attackRange && yDistance <= yTolerance)
+        bool inAttackRange = xDistance <= attackRange && yDistance <= yTolerance;
+        bool tooCloseToPlayer = xDistance <= stopDistance;
+
+        if (inAttackRange)
         {
             if (Time.time >= lastAttackTime + attackCooldown)
             {
@@ -50,22 +57,50 @@ public class EnemyMeleeAttack : MonoBehaviour
         else
         {
             animator.SetBool("Attacking", false);
-            animator.SetBool("Walking", true);
+
+            if (!tooCloseToPlayer)
+            {
+                animator.SetBool("Walking", true);
+
+                // Hareket sadece X yönünde olacaksa şu satırı kullan:
+                Vector2 direction = new Vector2(Mathf.Sign(directionToPlayer.x), 0);
+
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                animator.SetBool("Walking", false);
+                rb.linearVelocity = Vector2.zero;
+            }
         }
     }
 
-    System.Collections.IEnumerator AttackRoutine()
+
+    IEnumerator AttackRoutine()
     {
         isAttacking = true;
         lastAttackTime = Time.time;
 
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(damage);
-        }
+        // Biraz bekle → hasarın animasyonla senkron olması için (örnek: 0.3 saniye sonra vurur)
+        yield return new WaitForSeconds(0.3f);
 
-        yield return new WaitForSeconds(attackDuration); // animasyon süresi kadar bekle
+        // Hâlâ hedef varsa ve hâlâ saldırıyorsa vur
+        if (player != null && isAttacking)
+        {
+            float xDistance = Mathf.Abs(transform.position.x - player.position.x);
+            float yDistance = Mathf.Abs(transform.position.y - player.position.y);
+
+            if (xDistance <= attackRange && yDistance <= yTolerance)
+            {
+                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damage);
+                }
+            }
+        }
+        // Saldırı tamamlanınca
+        yield return new WaitForSeconds(attackDuration - 0.3f); // animasyonun kalan süresi
         isAttacking = false;
     }
 }

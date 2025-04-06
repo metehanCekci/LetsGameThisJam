@@ -208,7 +208,6 @@ MonoBehaviour:
   firePoint: {fileID: 5616082899730117770}
   slashLifetime: 0.1
   currentMoveSpeed: 0
-  currentDirXorY: 0
 --- !u!114 &9173258965010975121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb2fe4fefda06446aaa31ffab94ee03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIStatusBars: {fileID: 0}
   iFrameDuration: 1
   isInvincible: 0
   enemyLayerName: Enemy
