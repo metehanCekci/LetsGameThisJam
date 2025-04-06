@@ -10,7 +10,7 @@ public class RangedEnemyAi : MonoBehaviour
     public int burstCount = 3;                // Number of bullets per burst
     public float timeBetweenShots = 0.1f;    // Time between each bullet in a burst
     public GameObject bulletPrefab;           // Bullet prefab to shoot
-
+    private Animator anim;
     private Transform player;                 // Reference to the player
     private bool isShooting = false;          // Whether the enemy is currently shooting
     private bool isFollowing = false;         // Whether the enemy is currently following the player
@@ -19,6 +19,7 @@ public class RangedEnemyAi : MonoBehaviour
     {
         // Find the player in the scene by tag
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -52,14 +53,32 @@ public class RangedEnemyAi : MonoBehaviour
     // Function to move the enemy towards the player
     void FollowPlayer()
     {
+    
+        
+
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
+        // Flip sprite based on direction
+        if (direction.x > 0) // Player is to the right
+        {
+            transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (direction.x < 0) // Player is to the left
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
+
 
     // Coroutine to handle shooting bursts
     IEnumerator ShootBurst()
     {
+        anim.SetTrigger("OnAttack");
+        anim.SetBool("isWalking", false);
         isShooting = true;
+
+        yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < burstCount; i++)
         {
