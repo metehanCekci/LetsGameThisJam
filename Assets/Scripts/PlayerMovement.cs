@@ -54,14 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         MovePlayer(); // Use Rigidbody2D for movement
-        if (true)
-        {
 
-        }
-        else if (true)
-        {
-
-        }
     }
 
     void MovePlayer()
@@ -82,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("goingDown", false);
             animator.SetBool("goingLeft", false);
             animator.SetBool("goingRight", false);
+            animator.SetBool("Walking", false);
             if (currentDirXorY)
             {
                 animator.SetBool("CurrentDirXorY", true);
@@ -102,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("goingLeft", true);
                 animator.SetBool("goingUp", false);
                 animator.SetBool("goingDown", false);
+                animator.SetBool("Walking", true);
                 currentDirXorY = true; //true X false Y
                 spriteRenderer.flipX = false;
                 animator.SetBool("lookingDown", false);
@@ -115,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
                 currentDirXorY = true;
                 spriteRenderer.flipX = true;
                 animator.SetBool("lookingDown", false);
+                animator.SetBool("Walking", true);
             }
         }
         else
@@ -127,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("goingLeft", false);
                 currentDirXorY = false;
                 animator.SetBool("lookingDown", false);
+                animator.SetBool("Walking", true);
             }
             else//down
             {
@@ -136,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("goingLeft", false);
                 currentDirXorY = false;
                 animator.SetBool("lookingDown", true);
-                
+                animator.SetBool("Walking", true);
             }
         }
     }
