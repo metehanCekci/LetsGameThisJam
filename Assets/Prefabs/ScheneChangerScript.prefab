@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 863340570447355256}
   - component: {fileID: 4258503418356306717}
-  - component: {fileID: 6455282365982708487}
   m_Layer: 0
   m_Name: ScheneChangerScript
   m_TagString: Untagged
@@ -45,19 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee7799e41c84774886c086f4808b8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseScript: {fileID: 0}
   SplashScreenFade: {fileID: 0}
   FadeInAnim: {fileID: 0}
   FadeOutAnim: {fileID: 0}
   fadeDuration: 1
---- !u!114 &6455282365982708487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2874765602047956786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00644e5500f7c0742a7e8ae32ce16fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
