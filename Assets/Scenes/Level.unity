@@ -26203,7 +26203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7141182391761121058, guid: c60715dac81608b4187930287b20e30e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26650,7 +26650,7 @@ PrefabInstance:
       objectReference: {fileID: 1390047988}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: totalEnemiesToSpawn
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6146740466981161782, guid: 752af06e251f3274e8b3ca5a201ee4aa, type: 3}
       propertyPath: enemyPrefabs.Array.size

@@ -13,8 +13,9 @@ public class SceneChangeScript : MonoBehaviour
 
     public void Awake()
     {
-        FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
-        FadeOutAnim.gameObject.SetActive(false);
+        
+        
+
     }
     public void Start()
     {
@@ -32,6 +33,8 @@ public class SceneChangeScript : MonoBehaviour
         {
             FadeOutAnim = GameObject.Find("UI").transform.Find("FadeOut").GetComponent<Image>();
         }
+        FadeInAnim.gameObject.SetActive(false); // ekranda kalmasýn
+        FadeOutAnim.gameObject.SetActive(false);
     }
     public void StartGame()
     {
@@ -120,9 +123,12 @@ public class SceneChangeScript : MonoBehaviour
         {
             Destroy(AudioManager.instance.gameObject);
         }
-        pauseScript.active = false;
-        pauseScript.pauseMenu.SetActive(false);
-        StartCoroutine(FadeInAndLoadScene(1));
+        //pauseScript.active = false;
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != 9)
+        {
+            pauseScript.pauseMenu.SetActive(false);
+        }
+        StartCoroutine(FadeInAndLoadScene(8));
     }
     public void loadLevel1()
     {
@@ -165,5 +171,7 @@ public class SceneChangeScript : MonoBehaviour
     public void ReLoad()
     {
         SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        GameManagerScript.instance.Health = GameManagerScript.instance.MaxHealth;
     }
 }

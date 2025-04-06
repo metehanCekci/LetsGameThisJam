@@ -195,6 +195,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90cf10ac7f884543a1f523cd31ec88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &498718815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3645848386034486355, guid: bbd05e96e498b864e9230374ed04b45d, type: 3}
+  m_PrefabInstance: {fileID: 498718809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee7799e41c84774886c086f4808b8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &756187509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,7 +418,7 @@ PrefabInstance:
     - target: {fileID: 3274353845632385028, guid: d738a55e7e7262a42a889db76d2597df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1884834245}
+      objectReference: {fileID: 498718815}
     - target: {fileID: 3274353845632385028, guid: d738a55e7e7262a42a889db76d2597df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: mainMenu
@@ -735,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 2587746137257562181, guid: c60715dac81608b4187930287b20e30e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1884834245}
+      objectReference: {fileID: 498718815}
     - target: {fileID: 2587746137257562181, guid: c60715dac81608b4187930287b20e30e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -763,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 6426985487277179988, guid: c60715dac81608b4187930287b20e30e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1884834245}
+      objectReference: {fileID: 498718815}
     - target: {fileID: 6426985487277179988, guid: c60715dac81608b4187930287b20e30e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

@@ -17,7 +17,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
     void Start()
     {
-        sceneChangeScript = FindFirstObjectByType<SceneChangeScript>();
+        //sceneChangeScript =FindObjectOfType<SceneChangeScript>();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -68,7 +68,7 @@ public class EnemySpawnerScript : MonoBehaviour
         }
     }
 
-void LoadNextScene()
+public void LoadNextScene()
 {
     GameManagerScript.instance.level++;
         sceneChangeScript.ToMarket();
