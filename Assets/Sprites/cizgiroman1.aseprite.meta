@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba6ef05620a0b7b4988f51692bee95fb
+guid: f841a92f514f56942a83ce0f137f4309
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,30 +123,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: cizgiroman1
     originalName: 
-    pivot: {x: 0.38659507, y: 0.4554736}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 131
-      width: 50
-      height: 121
-    spriteID: 4fdd0ebb02280504283f0359eb7a84bc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 131}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.46729138, y: 0.5028663}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -154,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 57
-      height: 119
-    spriteID: feb64e889a942a54f95935d62f8f2690
+      width: 500
+      height: 700
+    spriteID: 5ac04fa50fb5ac84e8bd357fe565ca49
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -165,123 +144,24 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.43371493, y: 0.4583693}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 134
-      y: 4
-      width: 52
-      height: 116
-    spriteID: d87298fc4e5d013498b67e4dfd9b7b4f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 134, y: 4}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.40494645, y: 0.4655845}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 62
-      y: 131
-      width: 50
-      height: 121
-    spriteID: d620a542e9ecff74eaa5d29690a7410e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 62, y: 131}
-  - name: Frame_4
-    originalName: 
-    pivot: {x: 0.4780232, y: 0.48230472}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 69
-      y: 4
-      width: 57
-      height: 119
-    spriteID: 7beed622d59f3c04083d25df3a08364c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 69, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1864456729
-    name: enemywalk
+    guid: 1115021484
+    name: cizgiroman1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: cizgiroman1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 41
-        y: 3
-        width: 50
-        height: 121
-      spriteId: 4fdd0ebb02280504283f0359eb7a84bc
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 34
-        y: 5
-        width: 57
-        height: 119
-      spriteId: feb64e889a942a54f95935d62f8f2690
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 39
-        y: 8
-        width: 52
-        height: 116
-      spriteId: d87298fc4e5d013498b67e4dfd9b7b4f
-    - name: Frame_3
-      frameIndex: 3
-      additiveSortOrder: 0
-      cellRect:
-        x: 41
-        y: 3
-        width: 50
-        height: 121
-      spriteId: d620a542e9ecff74eaa5d29690a7410e
-    - name: Frame_4
-      frameIndex: 4
-      additiveSortOrder: 0
-      cellRect:
-        x: 34
-        y: 5
-        width: 57
-        height: 119
-      spriteId: 7beed622d59f3c04083d25df3a08364c
+        x: 0
+        y: 0
+        width: 500
+        height: 700
+      spriteId: 5ac04fa50fb5ac84e8bd357fe565ca49
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -300,5 +180,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 128, y: 128}
-  previousTextureSize: {x: 256, y: 256}
+  canvasSize: {x: 500, y: 700}
+  previousTextureSize: {x: 512, y: 1024}
