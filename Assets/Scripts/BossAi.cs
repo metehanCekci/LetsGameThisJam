@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public class BossAi : MonoBehaviour
 {
+    public Sprite pointHand;
+    public Sprite Hand;
+    public Sprite Hand2;
+
+    public Sprite SwipeHand;
+    public Sprite SwipeHand2;
     GameObject LeftHand;
     GameObject RightHand;
 
@@ -83,11 +89,18 @@ public class BossAi : MonoBehaviour
         Transform attackPos = isLeft ? LeftAttackPos : RightAttackPos;
         Transform restPos = isLeft ? LeftRestPos : RightRestPos;
 
+        //hand.GetComponent<SpriteRenderer>().sprite = pointHand;
         // Move hand to attack position
         yield return StartCoroutine(MoveToPosition(hand.transform, attackPos.position));
 
         // Shoot bullets
         StartCoroutine(ShootBulletsFrom(attackPos));
+
+        // Wait for ShootBulletsFrom to complete
+        yield return new WaitForSeconds(bulletCount * 0.1f); // Adjust time to match bullet spawning interval
+
+        // Change sprite based on which hand performed the attack
+        hand.GetComponent<SpriteRenderer>().sprite = isLeft ? Hand : Hand2;
 
         // Wait at attack position
         yield return new WaitForSeconds(attackPauseDuration);
@@ -95,6 +108,7 @@ public class BossAi : MonoBehaviour
         // Move hand back to rest position
         yield return StartCoroutine(MoveToPosition(hand.transform, restPos.position));
     }
+
 
     IEnumerator Horde()
     {
@@ -127,57 +141,57 @@ public class BossAi : MonoBehaviour
     }
 
 
-IEnumerator Swipe()
-{
-    bool isLeft = Random.Range(0, 2) == 0;
-    bool isUp = Random.Range(0, 2) == 0;
-
-    GameObject hand = isLeft ? LeftHand : RightHand;
-    Transform startPos = null;
-    Transform endPos = null;
-
-    if (isLeft && isUp)
+    IEnumerator Swipe()
     {
-        startPos = HandSwipeLUP;
-        endPos = HandSwipeRUP;
-    }
-    else if (isLeft && !isUp)
-    {
-        startPos = HandSwipeLDOWN;
-        endPos = HandSwipeRDOWN;
-    }
-    else if (!isLeft && isUp)
-    {
-        startPos = HandSwipeRUP;
-        endPos = HandSwipeLUP;
-    }
-    else
-    {
-        startPos = HandSwipeRDOWN;
-        endPos = HandSwipeLDOWN;
+        bool isLeft = Random.Range(0, 2) == 0;
+        bool isUp = Random.Range(0, 2) == 0;
+
+        GameObject hand = isLeft ? LeftHand : RightHand;
+        Transform startPos = null;
+        Transform endPos = null;
+
+        if (isLeft && isUp)
+        {
+            startPos = HandSwipeLUP;
+            endPos = HandSwipeRUP;
+        }
+        else if (isLeft && !isUp)
+        {
+            startPos = HandSwipeLDOWN;
+            endPos = HandSwipeRDOWN;
+        }
+        else if (!isLeft && isUp)
+        {
+            startPos = HandSwipeRUP;
+            endPos = HandSwipeLUP;
+        }
+        else
+        {
+            startPos = HandSwipeRDOWN;
+            endPos = HandSwipeLDOWN;
+        }
+
+        Transform restPos = isLeft ? LeftRestPos : RightRestPos;
+
+        // === Step 1: Move hand slowly to starting swipe position
+        yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, startPos.position, attackMoveSpeed * 1.5f));
+
+        hand.GetComponent<CircleCollider2D>().enabled = true;
+        yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, endPos.position, attackMoveSpeed * 5f));
+        hand.GetComponent<CircleCollider2D>().enabled = false;
+        // === Step 3: Fast return to rest position
+        yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, restPos.position, attackMoveSpeed * 3f));
     }
 
-    Transform restPos = isLeft ? LeftRestPos : RightRestPos;
-
-    // === Step 1: Move hand slowly to starting swipe position
-    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, startPos.position, attackMoveSpeed * 1.5f));
-
-    hand.GetComponent<CircleCollider2D>().enabled = true;
-    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, endPos.position, attackMoveSpeed * 5f));
-    hand.GetComponent<CircleCollider2D>().enabled = false;
-    // === Step 3: Fast return to rest position
-    yield return StartCoroutine(MoveToPositionWithSpeed(hand.transform, restPos.position, attackMoveSpeed * 3f));
-}
-
-// New coroutine to move with different speed
-IEnumerator MoveToPositionWithSpeed(Transform hand, Vector3 target, float moveSpeed)
-{
-    while (Vector3.Distance(hand.position, target) > 0.05f)
+    // New coroutine to move with different speed
+    IEnumerator MoveToPositionWithSpeed(Transform hand, Vector3 target, float moveSpeed)
     {
-        hand.position = Vector3.MoveTowards(hand.position, target, moveSpeed * Time.deltaTime);
-        yield return null;
+        while (Vector3.Distance(hand.position, target) > 0.05f)
+        {
+            hand.position = Vector3.MoveTowards(hand.position, target, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
-}
 
 
 
