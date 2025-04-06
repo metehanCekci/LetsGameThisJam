@@ -7,6 +7,7 @@ public class SplashScreenFade : MonoBehaviour
     [SerializeField] Image splashScreenImage;
     public AudioSource splashSound;
     public AudioSource menuMusic;
+    Transform cizgiRoman;
 
     [SerializeField] float fadeDuration = 1.5f;
 
@@ -14,6 +15,7 @@ public class SplashScreenFade : MonoBehaviour
     {
         menuMusic = AudioManager.instance.GetComponent<AudioSource>();
         StartCoroutine(PlaySplashThenFadeOut());
+        cizgiRoman = splashScreenImage.transform.GetChild(0);
     }
 
     IEnumerator PlaySplashThenFadeOut()
@@ -40,12 +42,14 @@ public class SplashScreenFade : MonoBehaviour
         Color color = splashScreenImage.color;
         color.a = 1f;
         splashScreenImage.color = color;
+        cizgiRoman.gameObject.GetComponent<Image>().color = color;
 
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
             color.a = 1f - Mathf.Clamp01(elapsed / fadeDuration);
             splashScreenImage.color = color;
+            cizgiRoman.gameObject.GetComponent<Image>().color = color;
             yield return null;
         }
 
