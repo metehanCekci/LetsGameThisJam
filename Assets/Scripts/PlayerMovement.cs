@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float slashLifetime = 0.2f;
     public float currentMoveSpeed;
     private Animator animator;
-    public bool currentDirXorY;
     private SpriteRenderer spriteRenderer;
 
     private Vector2 lastMoveDirection = Vector2.right;
@@ -25,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(GameManager);
         currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
         GameManagerScript.instance.Stamina = GameManagerScript.instance.MaxStamina;
-        animator = this.gameObject.GetComponent<Animator>();
-        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        rb = this.gameObject.GetComponent<Rigidbody2D>();  // Reference to Rigidbody2D
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -39,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSprinting && GameManagerScript.instance.Stamina > 0)
         {
-            GameManagerScript.instance.Stamina -= 25f * Time.fixedDeltaTime; // Using fixed drain rate for now
+            GameManagerScript.instance.Stamina -= 25f * Time.fixedDeltaTime;
             if (GameManagerScript.instance.Stamina <= 0)
             {
                 GameManagerScript.instance.Stamina = 0;
@@ -48,100 +47,40 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!isSprinting && GameManagerScript.instance.Stamina < GameManagerScript.instance.MaxStamina)
         {
-            GameManagerScript.instance.Stamina += 15f * Time.fixedDeltaTime; // Using fixed regen rate for now
+            GameManagerScript.instance.Stamina += 15f * Time.fixedDeltaTime;
             if (GameManagerScript.instance.Stamina > GameManagerScript.instance.MaxStamina)
                 GameManagerScript.instance.Stamina = GameManagerScript.instance.MaxStamina;
         }
 
-        MovePlayer(); // Use Rigidbody2D for movement
-
+        MovePlayer();
     }
 
     void MovePlayer()
     {
-        // Update the velocity of the Rigidbody2D directly for movement
         rb.linearVelocity = new Vector2(moveInput.x * currentMoveSpeed, moveInput.y * currentMoveSpeed);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        
         moveInput = context.ReadValue<Vector2>();
-
 
         if (moveInput.sqrMagnitude < 0.01f)
         {
-            animator.SetBool("goingUp", false);
-            animator.SetBool("goingDown", false);
-            animator.SetBool("goingLeft", false);
-            animator.SetBool("goingRight", false);
             animator.SetBool("Walking", false);
-            if (currentDirXorY)
-            {
-                animator.SetBool("CurrentDirXorY", true);
-            }
-            else
-            {
-                animator.SetBool("CurrentDirXorY", false);
-            }
-
             return;
         }
 
-        if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
-        {
-            if (moveInput.x > 0)//right
-            {
-                animator.SetBool("goingRight", true);
-                animator.SetBool("goingLeft", true);
-                animator.SetBool("goingUp", false);
-                animator.SetBool("goingDown", false);
-                animator.SetBool("Walking", true);
-                currentDirXorY = true; //true X false Y
-                spriteRenderer.flipX = false;
-                animator.SetBool("lookingDown", false);
-            }
-            else//left
-            {
-                animator.SetBool("goingRight", true);
-                animator.SetBool("goingLeft", true);
-                animator.SetBool("goingUp", false);
-                animator.SetBool("goingDown", false);
-                currentDirXorY = true;
-                spriteRenderer.flipX = true;
-                animator.SetBool("lookingDown", false);
-                animator.SetBool("Walking", true);
-            }
-        }
-        else
-        {
-            if (moveInput.y > 0)//up
-            {
-                animator.SetBool("goingUp", true);
-                animator.SetBool("goingDown", false);
-                animator.SetBool("goingRight", false);
-                animator.SetBool("goingLeft", false);
-                currentDirXorY = false;
-                animator.SetBool("lookingDown", false);
-                animator.SetBool("Walking", true);
-            }
-            else//down
-            {
-                animator.SetBool("goingUp", false);
-                animator.SetBool("goingDown", true);
-                animator.SetBool("goingRight", false);
-                animator.SetBool("goingLeft", false);
-                currentDirXorY = false;
-                animator.SetBool("lookingDown", true);
-                animator.SetBool("Walking", true);
-            }
-        }
+        SetFacingDirection(moveInput);
+        animator.SetBool("Walking", true);
+
+        spriteRenderer.flipX = moveInput.x < 0;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed && canSlash)
         {
+            SetFacingDirection(lastMoveDirection);
             animator.SetBool("Attacking", true);
             StartCoroutine(PerformSlash());
         }
@@ -163,31 +102,28 @@ public class PlayerMovement : MonoBehaviour
     {
         isSprinting = true;
         currentMoveSpeed = GameManagerScript.instance.RunSpeed;
-        // Speed is already set in GameManager so we just rely on that
     }
 
     void StopSprinting()
     {
         isSprinting = false;
         currentMoveSpeed = GameManagerScript.instance.WalkSpeed;
-        // Same here, we just keep using RunSpeed regardless of state
     }
 
     IEnumerator PerformSlash()
     {
         Debug.Log("Slash başladı. iFrame aktif mi: " + FindObjectOfType<PlayerHealth>().isInvincible);
         canSlash = false;
-        
 
         Vector3 spawnOffset = Vector3.zero;
 
-        if (lastMoveDirection.x > 0.5f) // Sağ
+        if (lastMoveDirection.x > 0.5f)
             spawnOffset = Vector3.right * GameManagerScript.instance.AttackRange;
-        else if (lastMoveDirection.x < -0.5f) // Sol
+        else if (lastMoveDirection.x < -0.5f)
             spawnOffset = Vector3.left * GameManagerScript.instance.AttackRange;
-        else if (lastMoveDirection.y > 0.6f) // Yukarı
+        else if (lastMoveDirection.y > 0.6f)
             spawnOffset = Vector3.up * GameManagerScript.instance.AttackRange;
-        else if (lastMoveDirection.y < -0.6f) // Aşağı
+        else if (lastMoveDirection.y < -0.6f)
             spawnOffset = Vector3.down * GameManagerScript.instance.AttackRange;
 
         Vector3 spawnPosition = firePoint.position + spawnOffset;
@@ -199,9 +135,28 @@ public class PlayerMovement : MonoBehaviour
         Destroy(slash, slashLifetime);
         yield return new WaitForSeconds(0.2f);
         animator.SetBool("Attacking", false);
-        yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown-0.2f);
+        yield return new WaitForSeconds(GameManagerScript.instance.AttackCooldown - 0.2f);
         canSlash = true;
-        
+    }
+
+    private void SetFacingDirection(Vector2 dir)
+    {
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            // Sağa veya sola bakıyorsa ikisini de true yap
+            animator.SetBool("goingRight", true);
+            animator.SetBool("goingLeft", true);
+            animator.SetBool("goingUp", false);
+            animator.SetBool("goingDown", false);
+        }
+        else
+        {
+            // Yukarı veya aşağı bakıyorsa yatayları false yap
+            animator.SetBool("goingRight", false);
+            animator.SetBool("goingLeft", false);
+            animator.SetBool("goingUp", dir.y > 0);
+            animator.SetBool("goingDown", dir.y < 0);
+        }
     }
 
 }
